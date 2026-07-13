@@ -24,6 +24,7 @@ const dishRoutes = require('./routes/dishRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const authRoutes = require('./routes/authRoutes');
 const customerRoutes = require('./routes/customerRoutes');
+const branchRoutes = require('./routes/branchRoutes');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
@@ -85,6 +86,7 @@ app.use('/api/dishes', dishRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/customers', customerRoutes);
+app.use('/api/branches', branchRoutes);
 
 // Server health check endpoint
 app.get('/health', (req, res) => {

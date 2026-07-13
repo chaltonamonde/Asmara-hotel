@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Asmara Hotel Pangani | Restaurant & Bar</title>
+    <meta
+        content="Visit Asmara Hotel Pangani for the legendary Lake Victoria tilapia by day and a full bar and lounge by night. Get directions, hours, menu highlights and our cocktail list."
+        name="description" />
+    <meta property="og:title" content="Asmara Hotel Pangani | Restaurant & Bar" />
+    <meta property="og:description" content="Visit Asmara Hotel Pangani for the legendary Lake Victoria tilapia by day and a full bar and lounge by night." />
+    <meta property="og:image" content="https://asmarahotel.com/images/og-image.jpg" />
+    <meta property="og:url" content="https://asmarahotel.com/pangani.html" />
+    <meta property="og:type" content="restaurant" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+
+    <!-- Tailwind -->
+    <script src="js/auth.js" defer></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "brand-bg": "#FBF6EE",
+                        "brand-charcoal": "#2B2420",
+                        "brand-terracotta": "#D9692D",
+                        "brand-green": "#3A5A40",
+                        "brand-gold": "#E8B84B"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Leaflet JS Map Styling & Script (CDN) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Global Custom Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+</head>
+
+<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
+    <div class="grain"></div>
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
+                ASMARA HOTEL
+            </a>
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
+                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
+                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
+                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
+                <a class="font-semibold text-sm text-brand-terracotta transition-colors" href="contact.html">Locations</a>
+                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm hover:scale-95 transition-all" href="index.html#reservation">Reserve Now</a>
+            </div>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-nav-toggle md:hidden p-2 text-brand-charcoal">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Menu Overlay -->
+    <div class="mobile-menu-overlay">
+        <button class="mobile-menu-close"><span class="material-symbols-outlined">close</span></button>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">Our Story</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Locations</a>
+        <a class="btn-reserve" href="index.html#reservation">Reserve Now</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-10 reveal">
+                <span class="badge mb-4" style="display:inline-block;">Pangani Branch — Restaurant &amp; Bar</span>
+                <h1 class="font-headline text-5xl mb-4">Asmara Hotel, Pangani</h1>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
+                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
+                    The same legendary Lake Victoria tilapia and Mama Oliech recipes our Kilimani guests love, now
+                    served in Pangani — with a full bar and lounge that keeps the evening going after the kitchen
+                    winds down.
+                </p>
+            </div>
+
+            <!-- Branch Switcher -->
+            <div class="branch-pills reveal">
+                <a class="branch-pill" href="contact.html">Kilimani (Main)</a>
+                <a class="branch-pill active" href="pangani.html">Pangani</a>
+                <a class="branch-pill" href="karen.html">Karen</a>
+                <a class="branch-pill" href="lavington.html">Lavington</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Image -->
+    <section class="pb-section-gap-mobile">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="rounded-2xl overflow-hidden organic-border reveal" style="aspect-ratio: 21/9;">
+                <img class="w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxNqzFbwFpldGzSCuuVMcQVzSwO9lz8UEYcJen8A8k6fCkfRaXvh_LQ8WkEqZ95zwo89SXGiKYjKAhRaYfigww_md-INR916OUWOHjOiYel6kme0_i3FBw_jnxLzLuKeErKrqLu4o1GoqvkUfrmW2qHZ676_0r37y8loJGhvUlZ6rYSm08M-k7wLIvvVyywlMDm6ThTGiu5xwJneCj6GyXGN6L6aggiVookmprHQEyFBnS7e2TETbw"
+                    alt="Warm restaurant interior with wooden tables set for guests" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Info Section -->
+    <section class="pb-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="contact-grid" style="grid-template-columns: 1fr; max-width: 900px; margin: 0 auto;">
+                <div class="contact-info-block reveal">
+                    <div class="info-item">
+                        <div class="info-icon"><span class="material-symbols-outlined">location_on</span></div>
+                        <div class="info-text">
+                            <h3>Our Location</h3>
+                            <p>Juja Road, Pangani</p>
+                            <p>Nairobi, Kenya</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><span class="material-symbols-outlined">schedule</span></div>
+                        <div class="info-text">
+                            <h3>Restaurant Hours</h3>
+                            <p style="font-weight: 600; color: var(--brand-green);">Open Daily (Monday - Sunday)</p>
+                            <p>9:00 AM - 10:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><span class="material-symbols-outlined">local_bar</span></div>
+                        <div class="info-text">
+                            <h3>Bar Hours</h3>
+                            <p style="font-weight: 600; color: var(--brand-green);">Sun - Thu: 5:00 PM - Midnight</p>
+                            <p>Fri - Sat: 5:00 PM - 1:00 AM</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><span class="material-symbols-outlined">call</span></div>
+                        <div class="info-text">
+                            <h3>Get In Touch</h3>
+                            <p>Phone: <a href="tel:+254723925604">+254 723 925 604</a></p>
+                            <p>Email: <a href="mailto:info@asmarahotel.com">info@asmarahotel.com</a></p>
+                        </div>
+                    </div>
+                    <div class="map-container" id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Here -->
+    <section class="bg-surface-container py-section-gap-mobile" style="background-color: var(--surface-container);">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-headline text-4xl mb-4">Popular at Our Pangani Table</h2>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
+                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
+                    Every branch shares the same kitchen standards. These are the dishes Pangani regulars order most, before the bar takes over for the evening.
+                </p>
+            </div>
+            <div class="grid-3 reveal">
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXtTWMi6q7mgXF28CjVVVB9xh_n2xTuMhevNiPI-qzYlW5MW8UNBJA5uY3PddKMcCq-ziaDp6shRR-cEnwiPmvmlqnzSldn0X2zwRqHBld8VTSByJOhhVwsyyJqUp8wwr3ZrXMISKqaBgR6USA6br_gFlAi5a3Qpxa_vCBsQY1QVsyrMSoOm7RtYg7S5g_haMEnbqLxZFCs3e4qlp_EKpon8oANtPMtmmmm9gCN74bEkVwSAPnl0XW" alt="Whole fried tilapia" />
+                    </div>
+                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">Bestseller</span>
+                    <h3 class="font-headline text-xl mb-2">Whole Tilapia (Dry Fry)</h3>
+                    <p class="font-body text-sm text-brand-charcoal/70">Fresh from Lake Victoria, seasoned with our
+                        secret salt rub and deep-fried to golden perfection.</p>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKu2uOyOXITPsJ-kAp8tXar2JNtJMbhJJDXRSub7PYKHqsyCrv5RDiq5SXE-A5HAl_ewskWkpJ75ppwrEKHutogGUjSqQEmHV8H0iFqUstGoq5DI-SlF6x6SpU6vzd9OAg4x_OX7zVCL53LwMk1WiECMGAPq_j_tMSBIwpoEkhX7t83wFtN2wVYO7Y4iRLD1uSDKYXqkbi9KsIbnQ_084zS65uUzp6-NwoWvtNAwnS34AG_COdx-rs" alt="Tilapia wet fry in gravy" />
+                    </div>
+                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">House Special</span>
+                    <h3 class="font-headline text-xl mb-2">Whole Tilapia (Wet Fry)</h3>
+                    <p class="font-body text-sm text-brand-charcoal/70">Simmered in a rich tomato and onion gravy,
+                        best enjoyed with a warm dome of ugali.</p>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSswVC4l5qrk4dO6TXNRNzp7k1hI-8phbCxB0BN_3MDoDW-rtQW1jNSVdt_VAh8d41b6ip6kRRXgmE8Ua5d093ryYPL4dPMstqzn7eYasMdgFcbfP5OC_GJ_O3Td__5IO3YSDmj1lV-ueWGizZyK2foj2_YuVS4xahi_J85Z3FOx4QzxulieQTmBvsnywPHCOQUIjVCoI7GSSRw5VYs27vQHb3wEx97O4AG5BoJiodyif2O0B6p05E" alt="Traditional ugali" />
+                    </div>
+                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">Traditional Side</span>
+                    <h3 class="font-headline text-xl mb-2">Ugali & Sukuma Wiki</h3>
+                    <p class="font-body text-sm text-brand-charcoal/70">A perfectly textured dome of ugali paired with
+                        fresh, lightly sautéed collard greens.</p>
+                </div>
+            </div>
+            <div class="text-center mt-12 reveal">
+                <a href="menu.html" class="btn-secondary" style="display:inline-flex;">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bar & Lounge Section (Pangani only) -->
+    <section class="py-section-gap-mobile" style="background-color: var(--brand-charcoal); color: #fff;">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="bar-badge mb-4" style="display:inline-block;">Pangani Exclusive</span>
+                <h2 class="font-headline text-4xl mb-4" style="color:#fff;">The Bar & Lounge</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto mb-6"></div>
+                <p class="font-body max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+                    When the kitchen slows down, the bar picks up. Pangani is the only Asmara Hotel branch with a
+                    full bar and lounge — cold beers, house cocktails and a good playlist, right through to closing.
+                </p>
+            </div>
+
+            <div class="grid-3 reveal">
+                <!-- Cocktails -->
+                <div class="bar-menu-card">
+                    <h3 class="font-headline text-xl mb-4">Signature Cocktails</h3>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Dawa</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 750</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Lake Breeze Mojito</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 800</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Passion Whiskey Sour</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 850</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Tamarind Margarita</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 850</span>
+                    </div>
+                </div>
+
+                <!-- Beers & Spirits -->
+                <div class="bar-menu-card">
+                    <h3 class="font-headline text-xl mb-4">Beers & Spirits</h3>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Tusker Lager (500ml)</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 350</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">White Cap (500ml)</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 350</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Guinness Smooth (Pint)</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 400</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Single Spirit & Mixer</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">From KES 500</span>
+                    </div>
+                </div>
+
+                <!-- Bar Bites -->
+                <div class="bar-menu-card">
+                    <h3 class="font-headline text-xl mb-4">Bar Bites</h3>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Spiced Fish Bites</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 600</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Chicken Wings (6pc)</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 700</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Masala Fries</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 350</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span class="menu-item-name">Mixed Nuts & Bites</span>
+                        <span class="dotted-leader"></span>
+                        <span class="menu-item-price">KES 300</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 reveal">
+                <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full" style="background: rgba(232,184,75,0.15); border: 1px solid rgba(232,184,75,0.35);">
+                    <span class="material-symbols-outlined" style="color: var(--brand-gold);">celebration</span>
+                    <span class="font-semibold text-sm" style="color: var(--brand-gold);">Happy Hour: Mon–Fri, 5:00 PM – 7:00 PM — selected drinks at half price</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-section-gap-mobile text-center px-6">
+        <div class="max-w-3xl mx-auto space-y-6 reveal">
+            <h2 class="font-headline text-4xl">Reserve Your Table in Pangani</h2>
+            <p class="font-body text-brand-charcoal/70">Come early for the kitchen, stay late for the bar — booking
+                ahead is recommended on weekends and match nights.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-6 pt-2">
+                <a href="index.html#reservation" class="btn-primary">RESERVE A TABLE</a>
+                <a href="https://wa.me/254723925604" target="_blank" class="btn-secondary">MESSAGE ON WHATSAPP</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-charcoal text-white pt-24 pb-12">
+        <div class="footer-content">
+            <h2 class="footer-logo">Asmara Hotel</h2>
+            <div class="footer-links">
+                <a href="menu.html">Menu</a>
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Location</a>
+            </div>
+            <p class="footer-branches-label">Our Branches</p>
+            <div class="footer-links">
+                <a href="contact.html">Kilimani (Main)</a>
+                <a href="pangani.html">Pangani</a>
+                <a href="karen.html">Karen</a>
+                <a href="lavington.html">Lavington</a>
+            </div>
+            <div class="footer-socials">
+                <a class="social-btn" href="#"><span class="material-symbols-outlined">public</span></a>
+                <a class="social-btn" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+                <a class="social-btn" href="#"><span class="material-symbols-outlined">video_library</span></a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Asmara Hotel. Heritage, Warmth, and Culinary Mastery.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a class="btn-whatsapp-floating" href="https://wa.me/254723925604" target="_blank">
+        <span class="material-symbols-outlined">chat</span>
+        <span>Message Mama</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pangani branch — approximate neighborhood coordinates.
+            // NOTE: update to the exact building location once confirmed.
+            const latitude = -1.2718;
+            const longitude = 36.8398;
+
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const mapOptions = { scrollWheelZoom: false };
+            if (isTouchDevice) {
+                mapOptions.dragging = false;
+                mapOptions.tap = false;
+            }
+
+            const map = L.map('map', mapOptions).setView([latitude, longitude], 14);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(map);
+
+            const marker = L.marker([latitude, longitude]).addTo(map);
+            marker.bindPopup("<div style='font-family: var(--font-headline); font-weight: bold;'>Asmara Hotel — Pangani</div><div style='font-size: 0.8rem; font-family: var(--font-body);'>Juja Road, Nairobi</div>").openPopup();
+
+            if (isTouchDevice) {
+                const mapEl = document.getElementById('map');
+                const overlay = document.createElement('div');
+                overlay.className = 'map-touch-overlay';
+                overlay.innerHTML = '<div class="map-touch-message">Use two fingers to pan the map</div>';
+                mapEl.appendChild(overlay);
+
+                let showOverlayTimeout = null;
+
+                mapEl.addEventListener('touchstart', (e) => {
+                    if (e.touches.length === 2) {
+                        map.dragging.enable();
+                        overlay.classList.remove('active');
+                        if (showOverlayTimeout) clearTimeout(showOverlayTimeout);
+                    } else if (e.touches.length === 1) {
+                        map.dragging.disable();
+                        if (showOverlayTimeout) clearTimeout(showOverlayTimeout);
+                        showOverlayTimeout = setTimeout(() => overlay.classList.add('active'), 100);
+                    }
+                });
+
+                mapEl.addEventListener('touchend', (e) => {
+                    if (e.touches.length === 0) {
+                        map.dragging.disable();
+                        overlay.classList.remove('active');
+                        if (showOverlayTimeout) clearTimeout(showOverlayTimeout);
+                    }
+                });
+
+                mapEl.addEventListener('touchmove', (e) => {
+                    if (e.touches.length === 2) {
+                        overlay.classList.remove('active');
+                        if (showOverlayTimeout) clearTimeout(showOverlayTimeout);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

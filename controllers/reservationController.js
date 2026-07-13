@@ -9,7 +9,7 @@ const pool = require('../db/db');
  */
 exports.createReservation = async (req, res, next) => {
     try {
-        const { name, phone, size, date, time, requests } = req.body;
+        const { name, phone, size, date, time, requests, branch } = req.body;
 
         // Validation
         if (!name || !phone || !size || !date || !time) {
@@ -20,6 +20,12 @@ exports.createReservation = async (req, res, next) => {
         if (isNaN(numGuests) || numGuests < 1 || numGuests > 500) {
             return res.status(400).json({ error: 'Guest count must be between 1 and 500.' });
         }
+
+        // Branch is optional — defaults to the main Kilimani branch so
+        // requests from before branches existed keep working unchanged.
+        // An invalid branch id is rejected by the branch_id foreign key
+        // constraint at the DB layer (caught below, surfaced via errorHandler).
+        const branchId = (branch || 'kilimani').trim();
 
         // Generate ID matching the BK-<timestamp> format used by frontend
         const id = 'BK-' + Date.now();
@@ -33,6 +39,7 @@ exports.createReservation = async (req, res, next) => {
             reservation_time: time,
             special_requests: (requests || 'None').trim(),
             status: 'pending',
+            branch_id: branchId,
             customer_id: req.customer ? req.customer.customerId : null
         };
 
@@ -44,6 +51,9 @@ exports.createReservation = async (req, res, next) => {
             reservation: newReservation
         });
     } catch (err) {
+        if (err.code === 'ER_NO_REFERENCED_ROW_2') {
+            return res.status(400).json({ error: 'Unknown branch. Check /api/branches for valid options.' });
+        }
         console.error('💥 Error creating reservation:', err);
         next(err);
     }
@@ -78,7 +88,8 @@ exports.getAllReservations = async (req, res, next) => {
                 size: String(row.num_guests),
                 date: formattedDate,
                 time: formattedTime,
-                requests: row.special_requests
+                requests: row.special_requests,
+                branch: row.branch_id
             };
         });
 
@@ -96,7 +107,7 @@ exports.getAllReservations = async (req, res, next) => {
 exports.updateReservation = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { status, name, phone, size, date, time, requests } = req.body;
+        const { status, name, phone, size, date, time, requests, branch } = req.body;
 
         // Check if reservation exists
         const existing = await pool('reservations').where({ id }).first();
@@ -112,10 +123,19 @@ exports.updateReservation = async (req, res, next) => {
         const newDate = date || existing.reservation_date;
         const newTime = time || existing.reservation_time;
         const newRequests = requests !== undefined ? requests.trim() : existing.special_requests;
+        const newBranch = branch !== undefined ? branch.trim() : existing.branch_id;
 
         // Validate size
         if (isNaN(newSize) || newSize < 1 || newSize > 500) {
             return res.status(400).json({ error: 'Guest count must be between 1 and 500.' });
+        }
+
+        // Validate branch, if one is being changed
+        if (branch !== undefined) {
+            const branchExists = await pool('branches').where({ id: newBranch }).first();
+            if (!branchExists) {
+                return res.status(400).json({ error: `Unknown branch: ${newBranch}` });
+            }
         }
 
         await pool('reservations')
@@ -128,6 +148,7 @@ exports.updateReservation = async (req, res, next) => {
                 reservation_date: newDate,
                 reservation_time: newTime,
                 special_requests: newRequests,
+                branch_id: newBranch,
                 updated_at: pool.fn.now()
             });
 

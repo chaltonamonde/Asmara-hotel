@@ -1464,6 +1464,71 @@ footer {
 }
 
 /* -----------------------------------------------------------------------------
+   25a. BRANCH PAGES — Pangani / Karen / Lavington
+   ----------------------------------------------------------------------------- */
+.branch-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 2rem auto 0;
+}
+
+.branch-pill {
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--brand-charcoal);
+    background-color: var(--surface-white);
+    transition: var(--transition-smooth);
+}
+
+.branch-pill:hover {
+    background-color: var(--brand-terracotta);
+    color: var(--surface-white);
+    border-color: var(--brand-terracotta);
+}
+
+.branch-pill.active {
+    background-color: var(--brand-charcoal);
+    color: var(--surface-white);
+    border-color: var(--brand-charcoal);
+}
+
+.bar-badge {
+    background-color: rgba(232, 184, 75, 0.18);
+    color: #9c6b00;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    line-height: 1.4;
+}
+
+.bar-menu-card {
+    background-color: var(--surface-white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.footer-branches-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.45;
+    margin-bottom: 0.75rem;
+    margin-top: -1rem;
+}
+
+/* -----------------------------------------------------------------------------
    25. ABOUT PAGE — Unique classes not in other pages
    ----------------------------------------------------------------------------- */
 

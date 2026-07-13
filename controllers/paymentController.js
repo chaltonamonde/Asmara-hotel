@@ -12,13 +12,19 @@ exports.initiateMpesaPayment = async (req, res, next) => {
     try {
         const { 
             name, phone, mpesaPhone, items, total, instructions,
-            orderType, deliveryAddress, deliveryArea, tableNumber, pickupTime, room 
+            orderType, deliveryAddress, deliveryArea, tableNumber, pickupTime, room, branch
         } = req.body;
 
         // Validation
         if (!name || !phone || !mpesaPhone || !items || !total) {
             return res.status(400).json({ error: 'Missing core checkout details or order items.' });
         }
+
+        // Branch is optional — defaults to the main Kilimani branch so
+        // existing checkout clients keep working unchanged. An invalid
+        // branch id is rejected by the branch_id foreign key constraint at
+        // the DB layer (caught below).
+        const branchId = (branch || 'kilimani').trim();
 
         // Context-specific validation
         if (orderType === 'delivery' && !deliveryAddress) {
@@ -74,6 +80,7 @@ exports.initiateMpesaPayment = async (req, res, next) => {
                 items: JSON.stringify(items),
                 total_price: parseFloat(total),
                 status: 'Pending',
+                branch_id: branchId,
                 customer_id: req.customer ? req.customer.customerId : null
             });
 
@@ -92,6 +99,9 @@ exports.initiateMpesaPayment = async (req, res, next) => {
         });
 
     } catch (err) {
+        if (err.code === 'ER_NO_REFERENCED_ROW_2') {
+            return res.status(400).json({ error: 'Unknown branch. Check /api/branches for valid options.' });
+        }
         console.error('💥 Error during STK push initiation transaction:', err);
         next(err);
     }
@@ -224,12 +234,18 @@ exports.createDirectOrder = async (req, res, next) => {
         const { 
             name, phone, items, total, instructions,
             orderType, deliveryAddress, deliveryArea, tableNumber, pickupTime, room,
-            paymentMethod, paymentDetail
+            paymentMethod, paymentDetail, branch
         } = req.body;
 
         if (!name || !phone || !items || !total || !paymentMethod) {
             return res.status(400).json({ error: 'Missing core checkout details, payment method, or order items.' });
         }
+
+        // Branch is optional — defaults to the main Kilimani branch so
+        // existing checkout clients keep working unchanged. An invalid
+        // branch id is rejected by the branch_id foreign key constraint at
+        // the DB layer (caught below).
+        const branchId = (branch || 'kilimani').trim();
 
         // Context-specific validation
         if (orderType === 'delivery' && !deliveryAddress) {
@@ -263,6 +279,7 @@ exports.createDirectOrder = async (req, res, next) => {
             items: JSON.stringify(items),
             total_price: parseFloat(total),
             status: paymentMethod === 'room_charge' ? 'Confirmed' : 'Pending',
+            branch_id: branchId,
             customer_id: req.customer ? req.customer.customerId : null
         };
 
@@ -275,6 +292,9 @@ exports.createDirectOrder = async (req, res, next) => {
         });
 
     } catch (err) {
+        if (err.code === 'ER_NO_REFERENCED_ROW_2') {
+            return res.status(400).json({ error: 'Unknown branch. Check /api/branches for valid options.' });
+        }
         console.error('💥 Error creating direct offline order:', err);
         next(err);
     }
