@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Secure Checkout | Asmara Hotel</title>
+    <meta name="robots" content="noindex, nofollow" />
+    
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    
+    <!-- Tailwind -->
+    <script src="js/auth.js" defer></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "brand-bg": "#FBF6EE",
+                        "brand-charcoal": "#2B2420",
+                        "brand-terracotta": "#D9692D",
+                        "brand-green": "#3A5A40",
+                        "brand-gold": "#E8B84B"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Global Custom Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/cart.css" rel="stylesheet" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    
+    <style>
+        .checkout-tab {
+            transition: all 0.3s ease;
+        }
+        .checkout-tab.active {
+            background-color: var(--brand-terracotta);
+            color: #ffffff;
+            border-color: var(--brand-terracotta);
+            box-shadow: 0 4px 12px rgba(217, 105, 45, 0.2);
+        }
+        .field-panel {
+            display: none;
+        }
+        .field-panel.active {
+            display: block;
+            animation: slideUp 0.3s ease forwards;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .checkout-summary-card {
+            background-color: var(--surface-white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white relative min-h-screen">
+    <div class="grain"></div>
+    
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
+                ASMARA HOTEL
+            </a>
+            <div class="flex gap-4 items-center">
+                <a href="menu.html" class="font-semibold text-sm hover:text-brand-terracotta transition-colors flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">arrow_back</span> Back to Menu
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 relative z-10" id="checkout-main-content">
+        <div class="mb-8">
+            <h1 class="font-headline text-4xl font-bold tracking-tight mb-2">Secure Checkout</h1>
+            <p class="text-sm opacity-85">Review your Lakeside fish order and choose your preferred delivery method.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left: Checkout Forms (lg:col-span-7) -->
+            <section class="lg:col-span-7 bg-white p-6 md:p-8 rounded-2xl border border-brand-charcoal/5 shadow-xl">
+                
+                <!-- Order Type Segmented Tabs -->
+                <div class="mb-6">
+                    <label class="block text-xs font-semibold uppercase tracking-wider mb-3 text-brand-charcoal/70">Order Type</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 bg-brand-bg p-1 rounded-xl border border-brand-charcoal/5">
+                        <button type="button" id="tab-delivery" class="checkout-tab active py-2.5 rounded-lg text-xs font-semibold border border-transparent text-center" data-type="delivery">
+                            🛵 Delivery
+                        </button>
+                        <button type="button" id="tab-takeaway" class="checkout-tab py-2.5 rounded-lg text-xs font-semibold border border-transparent text-center" data-type="takeaway">
+                            🥡 Takeaway
+                        </button>
+                        <button type="button" id="tab-room" class="checkout-tab py-2.5 rounded-lg text-xs font-semibold border border-transparent text-center" data-type="room_service">
+                            🏨 Room Svc
+                        </button>
+                        <button type="button" id="tab-dinein" class="checkout-tab py-2.5 rounded-lg text-xs font-semibold border border-transparent text-center" data-type="dine_in">
+                            🍽 Dine-In
+                        </button>
+                    </div>
+                </div>
+
+                <form id="restaurant-checkout-form" class="checkout-form" novalidate>
+                    
+                    <!-- Contact Details (Common to all) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="checkout-form-group">
+                            <label class="checkout-form-label" for="checkout-name">Your Full Name</label>
+                            <input type="text" id="checkout-name" class="checkout-form-input" placeholder="Idris Elba" required />
+                            <span class="checkout-form-error" id="error-name">Please enter your full name.</span>
+                        </div>
+                        <div class="checkout-form-group">
+                            <label class="checkout-form-label" for="checkout-phone">Phone Number</label>
+                            <input type="tel" id="checkout-phone" class="checkout-form-input" placeholder="e.g. 0712345678" required />
+                            <span class="checkout-form-error" id="error-phone">Valid phone number required.</span>
+                        </div>
+                    </div>
+
+                    <!-- Contextual Form Panels -->
+                    <div class="mt-4">
+                        
+                        <!-- 1. Delivery Panel -->
+                        <div id="panel-delivery" class="field-panel active flex flex-col gap-4">
+                            <div class="checkout-form-group">
+                                <label class="checkout-form-label" for="checkout-delivery-area">Delivery Area (Nairobi)</label>
+                                <select id="checkout-delivery-area" class="checkout-form-select">
+                                    <option value="kilimani">Kilimani (Free)</option>
+                                    <option value="kileleshwa">Kileleshwa (KES 150)</option>
+                                    <option value="lavington">Lavington (KES 150)</option>
+                                    <option value="westlands">Westlands (KES 200)</option>
+                                    <option value="cbd">Nairobi CBD (KES 200)</option>
+                                </select>
+                            </div>
+                            <div class="checkout-form-group">
+                                <label class="checkout-form-label" for="checkout-address">Delivery Address / House Details</label>
+                                <textarea id="checkout-address" class="checkout-form-textarea" placeholder="e.g. Lenana Heights, Apartment 4B, Lenana Road" required></textarea>
+                                <span class="checkout-form-error" id="error-address">Please enter your delivery address.</span>
+                            </div>
+                        </div>
+
+                        <!-- 2. Takeaway Panel -->
+                        <div id="panel-takeaway" class="field-panel flex flex-col gap-4">
+                            <div class="checkout-form-group">
+                                <label class="checkout-form-label" for="checkout-pickup-time">Preferred Pickup Time</label>
+                                <input type="time" id="checkout-pickup-time" class="checkout-form-input" required />
+                                <span class="checkout-form-error" id="error-pickup-time">Please choose a preferred pickup time.</span>
+                            </div>
+                        </div>
+
+                        <!-- 3. Room Service Panel -->
+                        <div id="panel-room" class="field-panel flex flex-col gap-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="checkout-form-group">
+                                    <label class="checkout-form-label" for="checkout-room">Room Number</label>
+                                    <input type="text" id="checkout-room" class="checkout-form-input" placeholder="e.g. 302" required />
+                                    <span class="checkout-form-error" id="error-room">Room number is required.</span>
+                                </div>
+                                <div class="checkout-form-group">
+                                    <label class="checkout-form-label" for="checkout-room-lastname">Guest Last Name</label>
+                                    <input type="text" id="checkout-room-lastname" class="checkout-form-input" placeholder="e.g. Elba" required />
+                                    <span class="checkout-form-error" id="error-room-lastname">Last name is required.</span>
+                                </div>
+                            </div>
+                            <div class="checkout-form-group">
+                                <label class="checkout-form-label" for="checkout-room-pin">Room Access PIN</label>
+                                <input type="password" id="checkout-room-pin" class="checkout-form-input" placeholder="e.g. 1234" maxlength="4" required />
+                                <span class="checkout-form-error" id="error-room-pin">4-digit Room PIN is required.</span>
+                            </div>
+                        </div>
+
+                        <!-- 4. Dine-In Panel -->
+                        <div id="panel-dinein" class="field-panel flex flex-col gap-4">
+                            <div class="checkout-form-group">
+                                <label class="checkout-form-label" for="checkout-table">Table Number</label>
+                                <input type="number" id="checkout-table" class="checkout-form-input" placeholder="e.g. 12" min="1" max="100" required />
+                                <span class="checkout-form-error" id="error-table">Please enter your table number.</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Payment Options -->
+                    <div class="checkout-form-group mt-4">
+                        <label class="checkout-form-label" for="checkout-payment">Payment Method</label>
+                        <select id="checkout-payment" class="checkout-form-select">
+                            <option value="card_online">Pay Online / Card (Stripe/M-Pesa)</option>
+                            <option value="cash_delivery">Cash/Card on Delivery</option>
+                            <option value="room_charge" id="option-room-charge">Charge to Room (Room Service Only)</option>
+                        </select>
+                    </div>
+
+                    <!-- Dynamic Payment Sub-Fields (M-Pesa / Card tabs) -->
+                    <div id="payment-details-box" class="payment-details-box mt-4">
+                        <!-- Loaded dynamically via checkout.js -->
+                    </div>
+
+                    <!-- Special Instructions -->
+                    <div class="checkout-form-group mt-4">
+                        <label class="checkout-form-label" for="checkout-instructions">Allergies / Special Instructions</label>
+                        <textarea id="checkout-instructions" class="checkout-form-textarea" placeholder="e.g. No onions, separate the wet sauce..."></textarea>
+                    </div>
+                </form>
+            </section>
+            
+            <!-- Right: Order Summary (lg:col-span-5) -->
+            <section class="lg:col-span-5 checkout-summary-card p-6 flex flex-col gap-6">
+                <h3 class="font-headline font-bold text-xl border-b border-brand-charcoal/10 pb-3 text-brand-charcoal/90">Order Summary</h3>
+                
+                <!-- Items list -->
+                <div class="flex flex-col gap-4 max-h-[300px] overflow-y-auto pr-2" id="checkout-summary-items">
+                    <!-- Loaded dynamically via checkout.js -->
+                </div>
+                
+                <!-- Pricing Totals -->
+                <div class="border-t border-brand-charcoal/10 pt-4 flex flex-col gap-3">
+                    <div class="flex justify-between items-center text-sm font-medium">
+                        <span class="opacity-75">Items Total</span>
+                        <span id="summary-subtotal">KES 0</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm font-medium">
+                        <span class="opacity-75">Service / Delivery Fee</span>
+                        <span id="summary-fee">KES 0</span>
+                    </div>
+                    <div class="flex justify-between items-center text-lg font-bold border-t border-brand-charcoal/5 pt-3">
+                        <span>Total Bill</span>
+                        <span class="text-brand-terracotta" id="summary-total">KES 0</span>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <button type="submit" form="restaurant-checkout-form" id="checkout-submit-btn" class="bg-brand-terracotta text-white w-full py-4 rounded-xl font-headline text-lg hover:scale-[0.98] active:scale-95 transition-all flex justify-center items-center gap-2 hover:bg-opacity-95 shadow-lg">
+                    Confirm &amp; Pay KES 0
+                </button>
+            </section>
+            
+        </div>
+    </main>
+
+    <!-- Global success state view container (hidden on start) -->
+    <div id="checkout-success-view" class="max-w-2xl mx-auto px-6 pt-32 pb-24 relative z-10 hidden">
+        <!-- Content injected dynamically on success -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+    <script src="js/checkout.js" defer></script>
+</body>
+</html>
