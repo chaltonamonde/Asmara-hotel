@@ -88,23 +88,24 @@
     </script>
 </head>
 
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
-    <div class="grain"></div>
+<body class="bg-brand-charcoal text-brand-bg font-body selection:bg-brand-terracotta selection:text-white hero-colorful-bg min-h-screen relative flex flex-col">
+    <div class="absolute inset-0 bg-brand-charcoal/80 z-0"></div>
+    <div class="grain z-0"></div>
 
     <!-- ══════════════════════════════════════════════════════════════════════
          PIN LOGIN OVERLAY
          Visible by default. Removed from DOM once correct PIN is entered.
     ══════════════════════════════════════════════════════════════════════ -->
     <div id="pin-gate-overlay" role="dialog" aria-modal="true" aria-labelledby="login-title"
-        style="position:fixed;inset:0;z-index:9998;background:var(--brand-bg);display:flex;align-items:center;justify-content:center;padding:1.5rem;">
+        style="position:fixed;inset:0;z-index:9998;background:transparent;display:flex;align-items:center;justify-content:center;padding:1.5rem;">
 
-        <div style="background:#fff;border-radius:20px;padding:3rem 2.5rem;max-width:420px;width:100%;box-shadow:0 24px 64px rgba(43,36,32,0.14);border:1px solid var(--border-color);text-align:center;">
+        <div style="background:rgba(43,36,32,0.6);backdrop-filter:blur(12px);border-radius:20px;padding:3rem 2.5rem;max-width:420px;width:100%;box-shadow:0 4px 30px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);text-align:center;color:var(--brand-bg);">
 
             <!-- Logo -->
             <div style="font-family:var(--font-headline);font-size:1.5rem;color:var(--brand-terracotta);font-weight:700;margin-bottom:0.5rem;">
                 Asmara Hotel
             </div>
-            <p style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--on-surface-variant);margin-bottom:2.5rem;">
+            <p style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(251,246,238,0.7);margin-bottom:2.5rem;">
                 Staff Portal
             </p>
 
@@ -116,19 +117,19 @@
                 <h1 id="login-title" style="font-family:var(--font-headline);font-size:1.5rem;margin-bottom:0.5rem;">
                     Staff Sign In
                 </h1>
-                <p style="font-size:0.875rem;color:var(--on-surface-variant);margin-bottom:1.5rem;">
+                <p style="font-size:0.875rem;color:rgba(251,246,238,0.7);margin-bottom:1.5rem;">
                     Restricted to Asmara Hotel restaurant staff.
                 </p>
                 <form id="form-staff-login" class="flex flex-col gap-3 text-left">
                     <div>
                         <label for="input-username" class="block text-xs font-semibold mb-1 opacity-70">Username</label>
-                        <input id="input-username" type="text" required placeholder="Enter username" class="w-full px-4 py-3 rounded-lg border border-brand-charcoal/10 text-sm focus:outline-none focus:border-brand-terracotta" />
+                        <input id="input-username" type="text" required placeholder="Enter username" class="w-full px-4 py-3 rounded-lg border border-white/10 bg-transparent text-brand-bg placeholder:text-brand-bg/50 text-sm focus:outline-none focus:border-brand-gold" />
                     </div>
                     <div>
                         <label for="input-password" class="block text-xs font-semibold mb-1 opacity-70">Password</label>
-                        <input id="input-password" type="password" required placeholder="Enter password" class="w-full px-4 py-3 rounded-lg border border-brand-charcoal/10 text-sm focus:outline-none focus:border-brand-terracotta" />
+                        <input id="input-password" type="password" required placeholder="Enter password" class="w-full px-4 py-3 rounded-lg border border-white/10 bg-transparent text-brand-bg placeholder:text-brand-bg/50 text-sm focus:outline-none focus:border-brand-gold" />
                     </div>
-                    <button type="submit" class="bg-brand-terracotta text-white w-full py-3.5 rounded-lg font-semibold text-sm hover:bg-opacity-95 transition-all mt-2">
+                    <button type="submit" class="bg-brand-terracotta text-white w-full py-3.5 rounded-lg font-semibold text-sm hover:bg-opacity-95 transition-all mt-2 glow-terracotta">
                         Sign In
                     </button>
                 </form>
@@ -150,9 +151,9 @@
                 <form id="form-mfa-setup" class="flex flex-col gap-3 text-left">
                     <div>
                         <label for="input-mfa-setup" class="block text-xs font-semibold mb-1 opacity-70">Verification Code</label>
-                        <input id="input-mfa-setup" type="text" required placeholder="000000" maxlength="6" pattern="[0-9]*" inputmode="numeric" class="w-full px-4 py-3 rounded-lg border border-brand-charcoal/10 text-center text-lg tracking-widest focus:outline-none focus:border-brand-terracotta" />
+                        <input id="input-mfa-setup" type="text" required placeholder="000000" maxlength="6" pattern="[0-9]*" inputmode="numeric" class="w-full px-4 py-3 rounded-lg border border-white/10 text-center text-lg tracking-widest focus:outline-none focus:border-brand-gold" style="background-color: rgba(43,36,32,0.9) !important; color: #FBF6EE !important; -webkit-text-fill-color: #FBF6EE !important;" />
                     </div>
-                    <button type="submit" class="bg-brand-terracotta text-white w-full py-3.5 rounded-lg font-semibold text-sm hover:bg-opacity-95 transition-all mt-1">
+                    <button type="submit" class="bg-brand-terracotta text-white w-full py-3.5 rounded-lg font-semibold text-sm hover:bg-opacity-95 transition-all mt-1 glow-terracotta">
                         Verify and Save Setup
                     </button>
                 </form>
@@ -172,9 +173,9 @@
                 <form id="form-mfa-verify" class="flex flex-col gap-3 text-left">
                     <div>
                         <label for="input-mfa-code" class="block text-xs font-semibold mb-1 opacity-70">MFA Verification Code</label>
-                        <input id="input-mfa-code" type="text" required placeholder="000000" maxlength="6" pattern="[0-9]*" inputmode="numeric" class="w-full px-4 py-3 rounded-lg border border-brand-charcoal/10 text-center text-lg tracking-widest focus:outline-none focus:border-brand-terracotta" />
+                        <input id="input-mfa-code" type="text" required placeholder="000000" maxlength="6" pattern="[0-9]*" inputmode="numeric" class="w-full px-4 py-3 rounded-lg border border-white/10 text-center text-lg tracking-widest focus:outline-none focus:border-brand-gold" style="background-color: rgba(43,36,32,0.9) !important; color: #FBF6EE !important; -webkit-text-fill-color: #FBF6EE !important;" />
                     </div>
-                    <button type="submit" class="bg-brand-terracotta text-white w-full py-3.5 rounded-lg font-semibold text-sm hover:bg-opacity-95 transition-all mt-2">
+                    <button type="submit" class="bg-brand-terracotta text-white w-full py-3.5 rounded-lg font-semibold text-sm hover:bg-opacity-95 transition-all mt-2 glow-terracotta">
                         Verify Code
                     </button>
                 </form>
@@ -187,7 +188,7 @@
 
             <!-- Back to site -->
             <a href="index.html"
-                style="font-size:0.8rem;color:var(--on-surface-variant);text-decoration:none;display:inline-flex;align-items:center;gap:0.25rem;margin-top:0.5rem;">
+                style="font-size:0.8rem;color:rgba(251,246,238,0.7);text-decoration:none;display:inline-flex;align-items:center;gap:0.25rem;margin-top:0.5rem;">
                 <span class="material-symbols-outlined" style="font-size:1rem;">arrow_back</span>
                 Back to restaurant website
             </a>
@@ -199,14 +200,14 @@
     ══════════════════════════════════════════════════════════════════════ -->
 
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10"
+    <header class="fixed w-full top-0 z-50 bg-brand-charcoal/90 backdrop-blur-md border-b border-white/10"
         style="display:none;" id="dashboard-header">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
                 ASMARA HOTEL
             </a>
             <div class="flex gap-4 items-center">
-                <span style="font-size:0.8rem;color:var(--on-surface-variant);font-weight:600;">
+                <span style="font-size:0.8rem;color:rgba(251,246,238,0.7);font-weight:600;">
                     <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle;">lock</span>
                     Staff Portal
                 </span>
@@ -220,7 +221,7 @@
     </header>
 
     <!-- Dashboard Main -->
-    <main id="dashboard-main" style="display:none;">
+    <main id="dashboard-main" style="display:none;" class="relative z-10 w-full flex-grow">
         <div class="pt-32 pb-24">
             <div class="dashboard-container">
 
@@ -228,19 +229,19 @@
                 <div class="dashboard-header">
                     <div>
                         <h2 class="font-headline text-4xl mb-2">Reservation Dashboard</h2>
-                        <p style="color: var(--on-surface-variant); font-size: 0.95rem;">Track, verify, and complete
+                        <p style="color: rgba(251,246,238,0.7); font-size: 0.95rem;">Track, verify, and complete
                             table bookings submitted by guests.</p>
                     </div>
                 </div>
 
                 <!-- Tab Switcher -->
-                <div class="flex gap-6 border-b border-brand-charcoal/10 pb-2 mb-8 mt-4">
+                <div class="flex gap-6 border-b border-white/10 pb-2 mb-8 mt-4">
                     <button id="tab-btn-reservations"
                         class="font-headline text-lg font-bold pb-2 border-b-2 border-brand-terracotta text-brand-terracotta transition-all cursor-pointer">
                         Table Reservations
                     </button>
                     <button id="tab-btn-orders"
-                        class="font-headline text-lg font-bold pb-2 border-b-2 border-transparent text-brand-charcoal/60 hover:text-brand-terracotta transition-all cursor-pointer">
+                        class="font-headline text-lg font-bold pb-2 border-b-2 border-transparent text-brand-bg/60 hover:text-brand-terracotta transition-all cursor-pointer">
                         Food &amp; Room Service Orders
                     </button>
                 </div>

@@ -11,12 +11,15 @@
 
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,400;1,9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" />
 
     <!-- Auth must load before other scripts on every page -->
     <script src="js/auth.js" defer></script>
+    <!-- main.js for header sticky behavior and mobile menu overlay -->
+    <script src="js/main.js" defer></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -29,6 +32,10 @@
                         "brand-terracotta": "#D9692D",
                         "brand-green": "#3A5A40",
                         "brand-gold": "#E8B84B"
+                    },
+                    fontFamily: {
+                        headline: ["Fraunces", "serif"],
+                        body: ["Work Sans", "sans-serif"]
                     }
                 }
             }
@@ -40,183 +47,540 @@
     <link rel="icon" type="image/png" href="favicon.png" />
 
     <style>
-        .login-shell {
-            min-height: 100vh;
+        /* ═══════════════════════════════════════════════════════════════════
+           GLASS CARD — right pane overlay
+           ═══════════════════════════════════════════════════════════════════ */
+        .glass-card {
+            background: rgba(43, 36, 32, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           SCOPED AUTH-PANE SYSTEM
+           All rules are prefixed with .auth-pane so they have CLASS-level
+           specificity (0,1,0 or higher) and always beat the bare element
+           rules (0,0,1) in style.css and Tailwind's @forms reset.
+           No !important needed.
+           ═══════════════════════════════════════════════════════════════════ */
+
+        /* ── Labels ──────────────────────────────────────────────────────── */
+        .auth-pane .af-label {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.6875rem;        /* 11px */
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(232, 184, 75, 0.80);  /* brand-gold/80 */
+            font-family: var(--font-body, 'Work Sans', sans-serif);
+            cursor: pointer;
+            /* Reset style.css 'label' rule */
+            opacity: 1;
+        }
+
+        /* ── Input wrapper (provides focus ring without touching <input> directly) */
+        .auth-pane .af-field {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border-radius: 0.75rem;       /* rounded-xl */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background-color: #1F1815;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            overflow: hidden;
+        }
+
+        .auth-pane .af-field:focus-within {
+            border-color: #D9692D;
+            box-shadow: 0 0 0 3px rgba(217, 105, 45, 0.20);
+        }
+
+        /* Error state on wrapper */
+        .auth-pane .auth-field.has-error .af-field {
+            border-color: rgba(239, 68, 68, 0.55);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+        }
+
+        /* ── Inputs ──────────────────────────────────────────────────────── */
+        .auth-pane .af-input {
+            /* Structural */
+            display: block;
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 2.75rem; /* py-3.5 pl-11 pr-4 */
+            border: none;                /* border handled by .af-field wrapper */
+            border-radius: 0;            /* wrapper is rounded */
+            outline: none;
+            background: transparent;     /* wrapper supplies the bg colour */
+            /* Typography */
+            font-size: 0.875rem;         /* text-sm */
+            font-family: var(--font-body, 'Work Sans', sans-serif);
+            color: #FAF6F0;              /* always cream — beats style.css charcoal */
+            /* Disable browser autofill yellow flash */
+            transition: background-color 9999s ease-in-out, color 9999s ease-in-out;
+        }
+
+        /* Wider right padding for inputs that have an eye-toggle button */
+        .auth-pane .af-input.has-toggle {
+            padding-right: 3rem;         /* pr-12 */
+        }
+
+        .auth-pane .af-input::placeholder {
+            color: #A89888;
+            opacity: 1;
+        }
+
+        /* Focus on the input itself is invisible — the wrapper handles the ring */
+        .auth-pane .af-input:focus {
+            outline: none;
+            box-shadow: none;
+            background: transparent;
+            color: #FAF6F0;
+        }
+
+        /* Override browser autofill (WebKit) */
+        .auth-pane .af-input:-webkit-autofill,
+        .auth-pane .af-input:-webkit-autofill:hover,
+        .auth-pane .af-input:-webkit-autofill:focus {
+            -webkit-text-fill-color: #FAF6F0;
+            -webkit-box-shadow: 0 0 0 1000px #1F1815 inset;
+            transition: background-color 9999s ease-in-out;
+        }
+
+        /* ── Icon inside field ───────────────────────────────────────────── */
+        .auth-pane .af-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #A89888;
+            font-size: 19px;
+            pointer-events: none;
+            transition: color 0.2s ease;
+            line-height: 1;
+        }
+
+        .auth-pane .af-field:focus-within .af-icon {
+            color: #D9692D;
+        }
+
+        /* ── Password toggle button ──────────────────────────────────────── */
+        .auth-pane .af-toggle {
+            position: absolute;
+            right: 0.875rem;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 7rem 1.25rem 3rem;
-        }
-
-        .login-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 2.25rem 2rem;
-            max-width: 440px;
-            width: 100%;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10);
-        }
-
-        .auth-tab {
-            flex: 1;
-            text-align: center;
-            padding: 0.6rem 0;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: #888;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s;
+            padding: 0.25rem;
+            color: #A89888;
             background: none;
-            border-top: none;
-            border-left: none;
-            border-right: none;
-        }
-
-        .auth-tab.active {
-            color: var(--brand-terracotta, #D9692D);
-            border-bottom-color: var(--brand-terracotta, #D9692D);
-        }
-
-        .auth-field {
-            margin-bottom: 1rem;
-        }
-
-        .auth-field label {
-            display: block;
-            font-size: 0.82rem;
-            font-weight: 600;
-            margin-bottom: 0.35rem;
-            color: #444;
-        }
-
-        .auth-field input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1.5px solid rgba(0, 0, 0, 0.15);
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-family: inherit;
-            background: #fafafa;
-            box-sizing: border-box;
-            transition: border-color 0.2s;
-        }
-
-        .auth-field input:focus {
-            outline: none;
-            border-color: var(--brand-terracotta, #D9692D);
-        }
-
-        .auth-submit-btn {
-            width: 100%;
-            padding: 0.9rem;
-            background: var(--brand-terracotta, #D9692D);
-            color: #fff;
             border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 700;
             cursor: pointer;
-            margin-top: 0.5rem;
-            transition: background 0.2s, opacity 0.2s;
+            transition: color 0.2s ease;
+            line-height: 1;
         }
 
-        .auth-submit-btn:hover {
-            background: #b8521f;
+        .auth-pane .af-toggle:hover { color: #D9692D; }
+        .auth-pane .af-toggle:focus { outline: none; }
+
+        /* ── Submit button — reset global form button[type=submit] rule ──── */
+        .auth-pane .af-submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #D9692D, #c05a24);
+            color: #ffffff;
+            font-size: 0.875rem;
+            font-weight: 700;
+            font-family: var(--font-body, 'Work Sans', sans-serif);
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            box-shadow: 0 6px 24px rgba(217, 105, 45, 0.35);
+            transform: translateY(0);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
         }
 
-        .auth-submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
+        .auth-pane .af-submit:hover {
+            box-shadow: 0 8px 32px rgba(217, 105, 45, 0.50);
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #D9692D, #c05a24); /* keep colour */
         }
 
-        .auth-msg {
+        .auth-pane .af-submit:active {
+            transform: translateY(0);
+        }
+
+        /* ── Error message row ───────────────────────────────────────────── */
+        .auth-pane .af-error {
             display: none;
-            padding: 0.7rem 1rem;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.75rem;
+            color: #f87171;              /* rose-400 */
+            margin-top: 0.25rem;
+        }
+
+        .auth-pane .af-error.visible {
+            display: flex;
+        }
+
+        /* ── Animations ──────────────────────────────────────────────────── */
+        .form-fade-in {
+            animation: afFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        @keyframes afFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0);   }
+        }
+
+        .loading-dots::after {
+            content: ' .';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+
+        @keyframes dots {
+            0%,20%  { content: '.';   }
+            40%     { content: '..';  }
+            60%     { content: '...'; }
+            80%,100%{ content: '';    }
+        }
+
+        /* ── Misc ────────────────────────────────────────────────────────── */
+        .grain {
+            position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            opacity: 0.03; pointer-events: none; z-index: 99;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .back-btn span { transition: transform 0.2s ease; }
+        .back-btn:hover span { transform: translateX(-4px); }
+
+        .ambient-zoom {
+            animation: zoomEffect 24s infinite alternate ease-in-out;
+        }
+
+        @keyframes zoomEffect {
+            0%   { transform: scale(1.00); }
+            100% { transform: scale(1.07); }
         }
     </style>
 </head>
 
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
+<body
+    class="bg-[#1A1412] text-[#FAF6F0] font-body selection:bg-brand-terracotta selection:text-white min-h-screen flex flex-col">
+    <div class="grain"></div>
 
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-[#1A1412]/80 backdrop-blur-md border-b border-white/5">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
+            <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight hover:text-brand-gold transition-colors"
+                href="index.html">
                 ASMARA HOTEL
             </a>
             <div class="hidden md:flex gap-8 items-center">
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="about.html">Our
-                    Story</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors"
+                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors text-white/95"
+                    href="menu.html">Menu</a>
+                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors text-white/95"
+                    href="about.html">Our Story</a>
+                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors text-white/95"
                     href="events.html">Events</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors"
+                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors text-white/95"
                     href="gallery.html">Gallery</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors"
+                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors text-white/95"
                     href="contact.html">Location</a>
+                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm hover:bg-[#b8521f] transition-all shadow-lg shadow-brand-terracotta/20"
+                    href="index.html#reservation">Reserve Now</a>
             </div>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-nav-toggle md:hidden p-2 text-brand-bg hover:text-brand-terracotta transition-colors"
+                aria-label="Open mobile menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
         </nav>
     </header>
 
-    <main class="login-shell">
-        <div class="login-card">
-            <div style="text-align:center;margin-bottom:1.5rem;">
-                <div style="font-size:2rem;">🐟</div>
+    <!-- Mobile Navigation Menu Overlay -->
+    <div class="mobile-menu-overlay bg-[#1A1412]/95 backdrop-blur-lg">
+        <button class="mobile-menu-close text-white hover:text-brand-terracotta transition-colors"
+            aria-label="Close mobile menu"><span class="material-symbols-outlined">close</span></button>
+        <a class="hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
+        <a class="hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
+        <a class="hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
+        <a class="hover:text-brand-terracotta transition-colors" href="events.html">Events</a>
+        <a class="hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
+        <a class="hover:text-brand-terracotta transition-colors" href="contact.html">Location</a>
+        <a class="btn-reserve bg-brand-terracotta hover:bg-[#b8521f] transition-colors"
+            href="index.html#reservation">Reserve Now</a>
+    </div>
+
+    <!-- Split-Screen Content Layout -->
+    <main class="flex-grow flex flex-col md:flex-row min-h-screen">
+        <!-- Left Pane: Authentication Form Column (100% mobile, 45% desktop) -->
+        <!-- Left Pane: Authentication Form Column —— class="auth-pane" scopes all form CSS -->
+        <div class="auth-pane w-full md:w-[45%] lg:w-[40%] relative z-10 flex flex-col justify-center min-h-screen overflow-hidden border-r border-white/5"
+            style="background: linear-gradient(160deg, #1C1410 0%, #120E0C 60%, #0E0B09 100%);">
+
+            <!-- Decorative top accent bar: terracotta → gold -->
+            <div class="absolute top-0 left-0 right-0 h-0.5"
+                style="background: linear-gradient(90deg, transparent, #D9692D 40%, #E8B84B 60%, transparent);"></div>
+
+            <div class="max-w-md w-full mx-auto px-8 md:px-12 py-12 pt-28 space-y-7">
+
+                <!-- ── Branding Header ─────────────────────── -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-brand-terracotta material-symbols-outlined text-[28px]"
+                            style="font-variation-settings:'FILL' 1;" aria-hidden="true">set_meal</span>
+                        <span class="font-headline text-brand-gold text-xs tracking-[0.2em] uppercase font-semibold">Asmara Hotel</span>
+                    </div>
+                    <h1 class="font-headline text-4xl font-bold text-white leading-tight">
+                        Welcome <span class="text-brand-terracotta italic">Back</span>
+                    </h1>
+                    <p class="text-sm text-[#A89888] font-body leading-relaxed">
+                        Sign in to track your orders, manage reservations, and more.
+                    </p>
+                </div>
+
+                <!-- ── Tab Switcher ────────────────────────── -->
+                <div class="relative flex p-1.5 rounded-2xl" style="background:#1A1210; border:1px solid rgba(255,255,255,0.06);">
+                    <!-- Sliding indicator pill — JS translates this -->
+                    <div id="tab-indicator"
+                        class="absolute top-1.5 bottom-1.5 left-1.5 w-[calc(50%-6px)] rounded-xl transition-transform duration-300 ease-out"
+                        style="background:linear-gradient(135deg,#D9692D,#b8521f); box-shadow:0 4px 18px rgba(217,105,45,0.35); transform:translateX(0);"></div>
+                    <button id="tab-login" type="button"
+                        class="relative z-10 flex-1 text-center py-3 text-sm font-bold text-white transition-colors duration-300 focus:outline-none font-body tracking-wide">
+                        Login
+                    </button>
+                    <button id="tab-register" type="button"
+                        class="relative z-10 flex-1 text-center py-3 text-sm font-bold transition-colors duration-300 focus:outline-none font-body tracking-wide"
+                        style="color:#A89888;">
+                        Register
+                    </button>
+                </div>
+
+                <!-- ── Status Alert ────────────────────────── -->
+                <div class="auth-msg hidden" id="auth-msg" role="alert"></div>
+
+                <!-- ══════════════════════════════════════════
+                     LOGIN FORM
+                     Every label uses .af-label, every input uses .af-input,
+                     every wrapper uses .af-field — scoped by .auth-pane parent.
+                     ══════════════════════════════════════════ -->
+                <form id="login-form" class="form-fade-in space-y-5" novalidate>
+
+                    <!-- ── Email ──────────────────────────── -->
+                    <div class="auth-field space-y-2">
+                        <label for="login-email" class="af-label">
+                            <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">mail</span>
+                            Email Address
+                        </label>
+                        <div class="af-field">
+                            <span class="af-icon material-symbols-outlined" aria-hidden="true">mail</span>
+                            <input class="af-input"
+                                type="email" id="login-email"
+                                autocomplete="username" required
+                                placeholder="name@example.com" />
+                        </div>
+                        <div class="field-error-msg af-error" role="alert">
+                            <span class="material-symbols-outlined shrink-0" style="font-size:15px;">error</span>
+                            <span class="error-text">Please enter a valid email address.</span>
+                        </div>
+                    </div>
+
+                    <!-- ── Password ───────────────────────── -->
+                    <div class="auth-field space-y-2">
+                        <label for="login-password" class="af-label">
+                            <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">lock</span>
+                            Password
+                        </label>
+                        <div class="af-field">
+                            <span class="af-icon material-symbols-outlined" aria-hidden="true">lock</span>
+                            <input class="af-input has-toggle"
+                                type="password" id="login-password"
+                                autocomplete="current-password" required
+                                placeholder="••••••••" />
+                            <button type="button" class="password-toggle-btn af-toggle"
+                                aria-label="Toggle password visibility">
+                                <span class="material-symbols-outlined" style="font-size:20px;">visibility</span>
+                            </button>
+                        </div>
+                        <div class="field-error-msg af-error" role="alert">
+                            <span class="material-symbols-outlined shrink-0" style="font-size:15px;">error</span>
+                            <span class="error-text">Password is required.</span>
+                        </div>
+                    </div>
+
+                    <!-- ── Submit ─────────────────────────── -->
+                    <button type="submit" id="login-submit-btn" class="af-submit">
+                        <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">login</span>
+                        Log In
+                    </button>
+
+                    <!-- ── Gold divider ───────────────────── -->
+                    <div class="flex items-center gap-3 pt-1">
+                        <div class="flex-1 h-px" style="background:linear-gradient(90deg,transparent,rgba(232,184,75,0.2));"></div>
+                        <span class="font-body" style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; color:rgba(232,184,75,0.4);">Est. 1980s</span>
+                        <div class="flex-1 h-px" style="background:linear-gradient(90deg,rgba(232,184,75,0.2),transparent);"></div>
+                    </div>
+                </form>
+
+                <!-- ══════════════════════════════════════════
+                     REGISTER FORM
+                     ══════════════════════════════════════════ -->
+                <form id="register-form" style="display:none;" class="space-y-4" novalidate>
+
+                    <!-- ── Full Name ───────────────────────── -->
+                    <div class="auth-field space-y-2">
+                        <label for="reg-name" class="af-label">
+                            <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">person</span>
+                            Full Name
+                        </label>
+                        <div class="af-field">
+                            <span class="af-icon material-symbols-outlined" aria-hidden="true">person</span>
+                            <input class="af-input"
+                                type="text" id="reg-name"
+                                autocomplete="name" required
+                                placeholder="Amina Ochieng" />
+                        </div>
+                        <div class="field-error-msg af-error" role="alert">
+                            <span class="material-symbols-outlined shrink-0" style="font-size:15px;">error</span>
+                            <span class="error-text">Please enter your full name.</span>
+                        </div>
+                    </div>
+
+                    <!-- ── Email ──────────────────────────── -->
+                    <div class="auth-field space-y-2">
+                        <label for="reg-email" class="af-label">
+                            <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">mail</span>
+                            Email Address
+                        </label>
+                        <div class="af-field">
+                            <span class="af-icon material-symbols-outlined" aria-hidden="true">mail</span>
+                            <input class="af-input"
+                                type="email" id="reg-email"
+                                autocomplete="username" required
+                                placeholder="name@example.com" />
+                        </div>
+                        <div class="field-error-msg af-error" role="alert">
+                            <span class="material-symbols-outlined shrink-0" style="font-size:15px;">error</span>
+                            <span class="error-text">Please enter a valid email address.</span>
+                        </div>
+                    </div>
+
+                    <!-- ── Phone ──────────────────────────── -->
+                    <div class="auth-field space-y-2">
+                        <label for="reg-phone" class="af-label">
+                            <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">phone</span>
+                            Phone Number
+                        </label>
+                        <div class="af-field">
+                            <span class="af-icon material-symbols-outlined" aria-hidden="true">phone</span>
+                            <input class="af-input"
+                                type="tel" id="reg-phone"
+                                autocomplete="tel" required
+                                placeholder="07XXXXXXXX" />
+                        </div>
+                        <div class="field-error-msg af-error" role="alert">
+                            <span class="material-symbols-outlined shrink-0" style="font-size:15px;">error</span>
+                            <span class="error-text">Please enter a valid phone number.</span>
+                        </div>
+                    </div>
+
+                    <!-- ── Password ───────────────────────── -->
+                    <div class="auth-field space-y-2">
+                        <label for="reg-password" class="af-label">
+                            <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">lock</span>
+                            Password
+                        </label>
+                        <div class="af-field">
+                            <span class="af-icon material-symbols-outlined" aria-hidden="true">lock</span>
+                            <input class="af-input has-toggle"
+                                type="password" id="reg-password"
+                                autocomplete="new-password" required minlength="6"
+                                placeholder="Minimum 6 characters" />
+                            <button type="button" class="password-toggle-btn af-toggle"
+                                aria-label="Toggle password visibility">
+                                <span class="material-symbols-outlined" style="font-size:20px;">visibility</span>
+                            </button>
+                        </div>
+                        <div class="field-error-msg af-error" role="alert">
+                            <span class="material-symbols-outlined shrink-0" style="font-size:15px;">error</span>
+                            <span class="error-text">Password must be at least 6 characters.</span>
+                        </div>
+                    </div>
+
+                    <!-- ── Submit ─────────────────────────── -->
+                    <button type="submit" id="register-submit-btn" class="af-submit">
+                        <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">person_add</span>
+                        Create Account
+                    </button>
+                </form>
+
+                <!-- ── Back Navigation ─────────────────────── -->
+                <div class="pt-4 text-center" style="border-top:1px solid rgba(232,184,75,0.12);">
+                    <a href="index.html"
+                        class="back-btn inline-flex items-center gap-2 text-sm font-semibold text-brand-terracotta hover:text-brand-gold transition-colors font-body group">
+                        <span class="material-symbols-outlined text-[18px] group-hover:-translate-x-1 transition-transform duration-200">arrow_back</span>
+                        Back to Home
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Right Pane: Brand/Art Showcase Column (Hidden on mobile, 55% desktop) -->
+        <div
+            class="hidden md:flex md:w-[55%] lg:w-[60%] relative overflow-hidden bg-brand-charcoal items-center justify-center">
+            <!-- Ambient Background Image -->
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <img class="ambient-zoom w-full h-full object-cover opacity-45 filter brightness-[0.6] select-none"
+                    src="images/karen_interior_dining_1784108894567.png" alt="Asmara Hotel Restaurant Ambiance" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#120E0D] via-[#120E0D]/30 to-transparent"></div>
+            </div>
+
+            <!-- Branding content -->
+            <div
+                class="relative z-10 p-12 max-w-xl text-left text-brand-bg space-y-6 select-none glass-card rounded-2xl mx-6">
                 <div
-                    style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--brand-terracotta,#D9692D);">
-                    Welcome to Asmara Hotel
+                    class="inline-flex items-center gap-2 bg-brand-gold/15 text-brand-gold px-4 py-1.5 rounded-full border border-brand-gold/25 backdrop-blur-md">
+                    <span class="material-symbols-outlined text-[16px] fill-current">star</span>
+                    <span class="font-semibold text-xs uppercase tracking-wider font-body">A Nairobi Institution</span>
                 </div>
-                <p style="font-size:0.85rem;color:#888;margin-top:0.25rem;">Sign in to track your orders and
-                    reservations</p>
+
+                <h2 class="font-headline text-4xl lg:text-5xl text-white leading-tight font-bold">
+                    Taste the Heritage of <span class="text-brand-gold italic">Lake Victoria</span>
+                </h2>
+
+                <p class="font-body text-base text-brand-bg/80 leading-relaxed">
+                    For decades, Asmara Hotel has served the finest Tilapia in Kenya, bringing authentic lake flavors
+                    straight to the tables of Nairobi. From world leaders to local families, we invite you to be part of
+                    our story.
+                </p>
+
+                <div class="pt-6 border-t border-white/10 flex items-start gap-4">
+                    <span
+                        class="material-symbols-outlined text-brand-terracotta text-[32px] shrink-0 select-none">format_quote</span>
+                    <div>
+                        <p class="font-body text-sm text-[#FAF6F0]/75 italic leading-relaxed">
+                            "The taste of the lake must reach the plate as if the water is still whispering to the
+                            fish."
+                        </p>
+                        <span class="block mt-2 font-headline text-xs text-brand-gold tracking-wider uppercase">— Lilian
+                            Oliech, Proprietor</span>
+                    </div>
+                </div>
             </div>
-
-            <div style="display:flex;border-bottom:1.5px solid rgba(0,0,0,0.08);margin-bottom:1.5rem;">
-                <button class="auth-tab active" data-tab="login" id="tab-login">Login</button>
-                <button class="auth-tab" data-tab="register" id="tab-register">Register</button>
-            </div>
-
-            <div class="auth-msg" id="auth-msg"></div>
-
-            <!-- Login form -->
-            <form id="login-form">
-                <div class="auth-field">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" autocomplete="username" required />
-                </div>
-                <div class="auth-field">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" autocomplete="current-password" required />
-                </div>
-                <button type="submit" class="auth-submit-btn" id="login-submit-btn">Log In</button>
-            </form>
-
-            <!-- Register form -->
-            <form id="register-form" style="display:none;">
-                <div class="auth-field">
-                    <label for="reg-name">Full Name</label>
-                    <input type="text" id="reg-name" autocomplete="name" required />
-                </div>
-                <div class="auth-field">
-                    <label for="reg-email">Email</label>
-                    <input type="email" id="reg-email" autocomplete="username" required />
-                </div>
-                <div class="auth-field">
-                    <label for="reg-phone">Phone Number</label>
-                    <input type="tel" id="reg-phone" placeholder="07XXXXXXXX" autocomplete="tel" required />
-                </div>
-                <div class="auth-field">
-                    <label for="reg-password">Password</label>
-                    <input type="password" id="reg-password" autocomplete="new-password" required minlength="6" />
-                </div>
-                <button type="submit" class="auth-submit-btn" id="register-submit-btn">Create Account</button>
-            </form>
-
-            <p style="text-align:center;font-size:0.85rem;color:#888;margin-top:1.5rem;">
-                <a href="index.html" style="color:var(--brand-terracotta,#D9692D);font-weight:600;text-decoration:none;">← Back to Home</a>
-            </p>
         </div>
     </main>
 
@@ -229,20 +593,112 @@
                 return;
             }
 
-            const tabLogin     = document.getElementById('tab-login');
-            const tabRegister  = document.getElementById('tab-register');
-            const loginForm    = document.getElementById('login-form');
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+            const loginForm = document.getElementById('login-form');
             const registerForm = document.getElementById('register-form');
-            const msg          = document.getElementById('auth-msg');
-            const loginBtn     = document.getElementById('login-submit-btn');
-            const registerBtn  = document.getElementById('register-submit-btn');
+            const msg = document.getElementById('auth-msg');
+            const loginBtn = document.getElementById('login-submit-btn');
+            const registerBtn = document.getElementById('register-submit-btn');
+            const tabIndicator = document.getElementById('tab-indicator');
+
+            // Inputs for validation
+            const loginEmailInput = document.getElementById('login-email');
+            const loginPasswordInput = document.getElementById('login-password');
+            const regNameInput = document.getElementById('reg-name');
+            const regEmailInput = document.getElementById('reg-email');
+            const regPhoneInput = document.getElementById('reg-phone');
+            const regPasswordInput = document.getElementById('reg-password');
+
+            // Password visibility toggle logic
+            document.querySelectorAll('.password-toggle-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const input = btn.previousElementSibling;
+                    const icon = btn.querySelector('.material-symbols-outlined');
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.textContent = 'visibility_off';
+                    } else {
+                        input.type = 'password';
+                        icon.textContent = 'visibility';
+                    }
+                });
+            });
+
+            // Validation Helper Functions
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(String(email).toLowerCase());
+            }
+
+            function validatePhone(phone) {
+                const re = /^[0-9+() \-]{9,15}$/;
+                return re.test(phone);
+            }
+
+            function showError(inputEl, message) {
+                const authField = inputEl.closest('.auth-field');
+                if (authField) {
+                    authField.classList.add('has-error');
+                }
+                const errorContainer = authField.querySelector('.field-error-msg');
+                if (errorContainer) {
+                    errorContainer.querySelector('.error-text').textContent = message;
+                    errorContainer.classList.remove('hidden');
+                    errorContainer.classList.add('flex');
+                }
+            }
+
+            function clearError(inputEl) {
+                const authField = inputEl.closest('.auth-field');
+                if (authField) {
+                    authField.classList.remove('has-error');
+                }
+                const errorContainer = authField.querySelector('.field-error-msg');
+                if (errorContainer) {
+                    errorContainer.classList.remove('flex');
+                    errorContainer.classList.add('hidden');
+                }
+            }
+
+            function handleValidation(input, validationFn, errorMsg) {
+                input.addEventListener('blur', () => {
+                    if (input.value.trim() === '') {
+                        clearError(input);
+                        return;
+                    }
+                    if (!validationFn(input.value)) {
+                        showError(input, errorMsg);
+                    } else {
+                        clearError(input);
+                    }
+                });
+                input.addEventListener('input', () => {
+                    if (validationFn(input.value)) {
+                        clearError(input);
+                    }
+                });
+            }
+
+            // Apply validation handlers
+            handleValidation(loginEmailInput, validateEmail, 'Please enter a valid email address.');
+            handleValidation(regEmailInput, validateEmail, 'Please enter a valid email address.');
+            handleValidation(regPasswordInput, val => val.length >= 6, 'Password must be at least 6 characters.');
+            handleValidation(regPhoneInput, validatePhone, 'Please enter a valid phone number.');
+            handleValidation(regNameInput, val => val.trim().length >= 2, 'Please enter your full name.');
 
             function showMsg(text, type) {
                 msg.textContent = text;
-                msg.style.display = 'block';
-                msg.style.background = type === 'success' ? '#e8f5e9' : '#fdecea';
-                msg.style.color = type === 'success' ? '#2e7d32' : '#ba1a1a';
-                msg.style.border = type === 'success' ? '1px solid #a5d6a7' : '1px solid #f5c6cb';
+                msg.className = `auth-msg flex items-center gap-2.5 p-4 rounded-xl text-sm mb-6 ${type === 'success'
+                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                        : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+                    }`;
+
+                const icon = document.createElement('span');
+                icon.className = 'material-symbols-outlined text-[20px] shrink-0';
+                icon.textContent = type === 'success' ? 'check_circle' : 'error';
+                msg.prepend(icon);
+                msg.style.display = 'flex';
             }
 
             function hideMsg() {
@@ -252,10 +708,30 @@
             function switchTab(tab) {
                 hideMsg();
                 const isLogin = tab === 'login';
-                tabLogin.classList.toggle('active', isLogin);
-                tabRegister.classList.toggle('active', !isLogin);
-                loginForm.style.display = isLogin ? 'block' : 'none';
-                registerForm.style.display = isLogin ? 'none' : 'block';
+
+                if (isLogin) {
+                    tabIndicator.style.transform = 'translateX(0)';
+                    tabLogin.classList.remove('text-white/60');
+                    tabLogin.classList.add('text-white');
+                    tabRegister.classList.remove('text-white');
+                    tabRegister.classList.add('text-white/60');
+
+                    loginForm.style.display = 'block';
+                    loginForm.classList.add('form-fade-in');
+                    registerForm.style.display = 'none';
+                    registerForm.classList.remove('form-fade-in');
+                } else {
+                    tabIndicator.style.transform = 'translateX(100%)';
+                    tabLogin.classList.remove('text-white');
+                    tabLogin.classList.add('text-white/60');
+                    tabRegister.classList.remove('text-white/60');
+                    tabRegister.classList.add('text-white');
+
+                    loginForm.style.display = 'none';
+                    loginForm.classList.remove('form-fade-in');
+                    registerForm.style.display = 'block';
+                    registerForm.classList.add('form-fade-in');
+                }
             }
 
             tabLogin.addEventListener('click', () => switchTab('login'));
@@ -265,17 +741,24 @@
                 const params = new URLSearchParams(window.location.search);
                 setTimeout(() => {
                     window.location.href = params.get('redirect') || 'profile.html';
-                }, 700);
+                }, 1000);
             }
 
             loginForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 hideMsg();
-                loginBtn.disabled = true;
-                loginBtn.textContent = 'Logging in...';
 
-                const email    = document.getElementById('login-email').value;
-                const password = document.getElementById('login-password').value;
+                const email = loginEmailInput.value;
+                const password = loginPasswordInput.value;
+
+                if (!validateEmail(email)) {
+                    showError(loginEmailInput, 'Please enter a valid email address.');
+                    loginEmailInput.focus();
+                    return;
+                }
+
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = 'Logging in <span class="loading-dots"></span>';
 
                 const result = await window.Auth.loginCustomer({ email, password });
 
@@ -293,13 +776,36 @@
             registerForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 hideMsg();
-                registerBtn.disabled = true;
-                registerBtn.textContent = 'Creating account...';
 
-                const name     = document.getElementById('reg-name').value;
-                const email    = document.getElementById('reg-email').value;
-                const phone    = document.getElementById('reg-phone').value;
-                const password = document.getElementById('reg-password').value;
+                const name = regNameInput.value;
+                const email = regEmailInput.value;
+                const phone = regPhoneInput.value;
+                const password = regPasswordInput.value;
+
+                // Final validation check
+                if (name.trim().length < 2) {
+                    showError(regNameInput, 'Please enter your full name.');
+                    regNameInput.focus();
+                    return;
+                }
+                if (!validateEmail(email)) {
+                    showError(regEmailInput, 'Please enter a valid email address.');
+                    regEmailInput.focus();
+                    return;
+                }
+                if (!validatePhone(phone)) {
+                    showError(regPhoneInput, 'Please enter a valid phone number.');
+                    regPhoneInput.focus();
+                    return;
+                }
+                if (password.length < 6) {
+                    showError(regPasswordInput, 'Password must be at least 6 characters.');
+                    regPasswordInput.focus();
+                    return;
+                }
+
+                registerBtn.disabled = true;
+                registerBtn.innerHTML = 'Creating account <span class="loading-dots"></span>';
 
                 const result = await window.Auth.registerCustomer({ name, email, phone, password });
 

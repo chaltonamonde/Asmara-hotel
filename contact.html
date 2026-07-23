@@ -52,32 +52,30 @@
     <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
+<body class="bg-brand-charcoal text-brand-bg font-body selection:bg-brand-terracotta selection:text-white">
     <div class="grain"></div>
 
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+    <header class="fixed w-full top-0 z-50 bg-brand-charcoal/90 backdrop-blur-md border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
                 ASMARA HOTEL
             </a>
             <div class="hidden md:flex gap-8 items-center">
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors"
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
                     href="index.html">Home</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="about.html">Our
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="about.html">Our
                     Story</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors"
-                    href="index.html#famous">Famous Guests</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors"
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
                     href="gallery.html">Gallery</a>
                 <a class="font-semibold text-sm text-brand-terracotta transition-colors"
                     href="contact.html">Location</a>
-                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm hover:scale-95 transition-all"
+                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm glow-terracotta transition-all"
                     href="index.html#reservation">Reserve Now</a>
             </div>
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-nav-toggle md:hidden p-2 text-brand-charcoal">
+            <button class="mobile-nav-toggle md:hidden p-2 text-brand-bg">
                 <span class="material-symbols-outlined">menu</span>
             </button>
         </nav>
@@ -95,12 +93,13 @@
     </div>
 
     <!-- Contact & Map Section -->
-    <section class="pt-32 pb-24">
-        <div class="max-w-7xl mx-auto px-6">
+    <section class="pt-32 pb-24 hero-colorful-bg relative">
+        <div class="absolute inset-0 bg-brand-charcoal/80"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16 reveal">
-                <h1 class="font-headline text-5xl mb-4">Come Dine With Us</h1>
+                <h1 class="font-headline text-5xl mb-4 text-brand-gold">Come Dine With Us</h1>
                 <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
-                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">
                     We are located in the heart of Kilimani, Nairobi. Drop by for fresh Lake Victoria Tilapia or drop us
                     a message below.
                 </p>
@@ -154,22 +153,22 @@
 
                 <!-- Form Column -->
                 <div class="reveal" style="transition-delay: 200ms;">
-                    <form id="contactForm" action="https://formspree.io/f/YOUR_ID" method="POST">
-                        <h2 class="font-headline text-2xl mb-4 text-center">Send Us a Message</h2>
+                    <form id="contactForm" action="https://formspree.io/f/YOUR_ID" method="POST" class="dark-form glass-dark p-8 rounded-2xl border border-white/10">
+                        <h2 class="font-headline text-2xl mb-4 text-center text-brand-gold">Send Us a Message</h2>
 
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" name="name" placeholder="John Doe" required />
+                            <input type="text" name="name" placeholder="John Doe" required class="bg-transparent text-brand-bg placeholder-brand-bg/50" />
                         </div>
 
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="email" name="email" placeholder="john@example.com" required />
+                            <input type="email" name="email" placeholder="john@example.com" required class="bg-transparent text-brand-bg placeholder-brand-bg/50" />
                         </div>
 
                         <div class="form-group">
                             <label>Subject</label>
-                            <select name="subject" required>
+                            <select name="subject" required class="bg-brand-charcoal text-brand-bg">
                                 <option value="" disabled selected>Select an option</option>
                                 <option value="catering">Catering / Event Hosting</option>
                                 <option value="feedback">Dining Feedback</option>
@@ -179,11 +178,11 @@
 
                         <div class="form-group">
                             <label>Message Content</label>
-                            <textarea name="message" placeholder="Write your message here..." rows="5" required></textarea>
+                            <textarea name="message" placeholder="Write your message here..." rows="5" required class="bg-transparent text-brand-bg placeholder-brand-bg/50"></textarea>
                         </div>
 
                         <button
-                            class="bg-brand-charcoal text-white py-4 rounded-lg font-headline text-lg hover:bg-brand-terracotta transition-all mt-2 cursor-pointer"
+                            class="bg-brand-terracotta text-white py-4 rounded-lg font-headline text-lg glow-terracotta w-full transition-all mt-2 cursor-pointer"
                             type="submit">
                             Send Message
                         </button>
@@ -194,39 +193,6 @@
         </div>
     </section>
 
-    <!-- Other Branches -->
-    <section class="pb-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12 reveal">
-                <h2 class="font-headline text-3xl mb-4">Our Other Branches</h2>
-                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
-                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
-                    Kilimani is our historic home, but you'll find the same legendary tilapia at three more Nairobi
-                    locations.
-                </p>
-            </div>
-            <div class="grid-3 reveal">
-                <div class="card">
-                    <h3 class="font-headline text-xl mb-2">Pangani</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70 mb-4">Restaurant by day, full bar and lounge
-                        by night.</p>
-                    <a href="pangani.html" class="btn-secondary" style="display:inline-flex;">Visit Pangani</a>
-                </div>
-                <div class="card">
-                    <h3 class="font-headline text-xl mb-2">Karen</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70 mb-4">A relaxed, garden-side table in Nairobi's
-                        leafy suburb.</p>
-                    <a href="karen.html" class="btn-secondary" style="display:inline-flex;">Visit Karen</a>
-                </div>
-                <div class="card">
-                    <h3 class="font-headline text-xl mb-2">Lavington</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70 mb-4">A firm favourite for weekday lunches and
-                        family dinners.</p>
-                    <a href="lavington.html" class="btn-secondary" style="display:inline-flex;">Visit Lavington</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="bg-brand-charcoal text-white pt-24 pb-12">
@@ -238,13 +204,7 @@
                 <a href="gallery.html">Gallery</a>
                 <a href="contact.html">Location</a>
             </div>
-            <p class="footer-branches-label">Our Branches</p>
-            <div class="footer-links">
-                <a href="contact.html">Kilimani (Main)</a>
-                <a href="pangani.html">Pangani</a>
-                <a href="karen.html">Karen</a>
-                <a href="lavington.html">Lavington</a>
-            </div>
+
             <div class="footer-socials">
                 <a class="social-btn" href="#"><span class="material-symbols-outlined">public</span></a>
                 <a class="social-btn" href="#"><span class="material-symbols-outlined">photo_camera</span></a>

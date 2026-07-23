@@ -200,7 +200,7 @@ function esc(val) {
  */
 function buildCard(item) {
     const article = document.createElement('article');
-    article.className = 'card menu-card';
+    article.className = 'card menu-card glass-dark rounded-xl overflow-hidden shadow-lg border border-white/10 transition-transform hover:-translate-y-1';
     article.setAttribute('data-category', item.category);
     article.setAttribute('data-id', item.id);
 
@@ -241,11 +241,11 @@ function buildCard(item) {
 
     const heading = document.createElement('h3');
     heading.className = 'font-headline';
-    heading.style.cssText = 'font-size:1.15rem; line-height:1.3; flex:1;';
+    heading.style.cssText = 'font-size:1.15rem; line-height:1.3; flex:1; color: var(--brand-gold);';
     heading.textContent = item.name; // textContent — no escaping needed for DOM text
 
     const price = document.createElement('span');
-    price.className = 'menu-item-price';
+    price.className = 'menu-item-price text-brand-bg font-bold';
     price.setAttribute('aria-label', 'Price: ' + item.price);
     price.textContent = item.price;
 
@@ -254,7 +254,7 @@ function buildCard(item) {
 
     // Description
     const desc = document.createElement('p');
-    desc.style.cssText = 'font-size:0.875rem; color:var(--on-surface-variant); line-height:1.6; margin-bottom:1.25rem; flex:1;';
+    desc.style.cssText = 'font-size:0.875rem; color: rgba(251, 246, 238, 0.7); line-height:1.6; margin-bottom:1.25rem; flex:1;';
     desc.textContent = item.description;
 
     // Badge row
@@ -262,14 +262,14 @@ function buildCard(item) {
     badgeRow.style.cssText = 'display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-top:auto;';
 
     const badge = document.createElement('span');
-    badge.className = 'badge';
+    badge.className = 'badge border border-white/20 bg-white/5 px-2 py-1 rounded text-xs text-brand-bg';
     badge.textContent = item.badge;
     badgeRow.appendChild(badge);
 
     if (item.spicy) {
         const spicyBadge = document.createElement('span');
-        spicyBadge.className = 'badge';
-        spicyBadge.style.cssText = 'background-color:rgba(186,26,26,0.08); color:#ba1a1a;';
+        spicyBadge.className = 'badge px-2 py-1 rounded text-xs';
+        spicyBadge.style.cssText = 'background-color:rgba(186,26,26,0.2); color:#ff6b6b; border: 1px solid rgba(186,26,26,0.3);';
         spicyBadge.setAttribute('aria-label', 'Contains chili — spicy dish');
         spicyBadge.textContent = '🌶 Spicy';
         badgeRow.appendChild(spicyBadge);
@@ -277,7 +277,7 @@ function buildCard(item) {
 
     if (item.allergens && item.allergens !== 'None') {
         const allergenNote = document.createElement('span');
-        allergenNote.style.cssText = 'font-size:0.7rem; color:var(--on-surface-variant); opacity:0.7; margin-left:auto;';
+        allergenNote.style.cssText = 'font-size:0.7rem; color: rgba(251, 246, 238, 0.5); margin-left:auto;';
         allergenNote.setAttribute('aria-label', 'Allergens: ' + item.allergens);
         allergenNote.title = 'Contains: ' + item.allergens;
         allergenNote.textContent = '⚠ ' + item.allergens;
@@ -293,7 +293,7 @@ function buildCard(item) {
     orderRow.style.cssText = 'margin-top: 1.25rem;';
     
     const addToCartBtn = document.createElement('button');
-    addToCartBtn.className = 'btn-add-to-cart bg-brand-terracotta text-white w-full py-2.5 px-4 rounded-lg font-semibold text-sm hover:scale-[0.98] active:scale-95 transition-all flex justify-center items-center gap-2 hover:bg-opacity-90';
+    addToCartBtn.className = 'btn-add-to-cart bg-brand-terracotta text-white w-full py-2.5 px-4 rounded-lg font-semibold text-sm hover:scale-[0.98] active:scale-95 transition-all flex justify-center items-center gap-2 glow-terracotta';
     addToCartBtn.setAttribute('data-id', item.id);
     addToCartBtn.innerHTML = '<span class="material-symbols-outlined text-base">shopping_cart</span> Add to Cart';
     
