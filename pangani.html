@@ -52,25 +52,25 @@
     <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
+<body class="bg-brand-charcoal text-brand-bg font-body selection:bg-brand-terracotta selection:text-white">
     <div class="grain"></div>
 
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+    <header class="fixed w-full top-0 z-50 bg-brand-charcoal/90 backdrop-blur-md border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
                 ASMARA HOTEL
             </a>
             <div class="hidden md:flex gap-8 items-center">
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
                 <a class="font-semibold text-sm text-brand-terracotta transition-colors" href="contact.html">Locations</a>
-                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm hover:scale-95 transition-all" href="index.html#reservation">Reserve Now</a>
+                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm glow-terracotta transition-all" href="index.html#reservation">Reserve Now</a>
             </div>
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-nav-toggle md:hidden p-2 text-brand-charcoal">
+            <button class="mobile-nav-toggle md:hidden p-2 text-brand-bg">
                 <span class="material-symbols-outlined">menu</span>
             </button>
         </nav>
@@ -88,13 +88,14 @@
     </div>
 
     <!-- Hero -->
-    <section class="pt-32 pb-16">
-        <div class="max-w-7xl mx-auto px-6">
+    <section class="pt-32 pb-16 hero-colorful-bg relative">
+        <div class="absolute inset-0 bg-brand-charcoal/80"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-10 reveal">
-                <span class="badge mb-4" style="display:inline-block;">Pangani Branch — Restaurant &amp; Bar</span>
-                <h1 class="font-headline text-5xl mb-4">Asmara Hotel, Pangani</h1>
+                <span class="badge mb-4 border border-brand-terracotta/30 text-brand-bg bg-brand-terracotta/20" style="display:inline-block;">Pangani Branch — Restaurant &amp; Bar</span>
+                <h1 class="font-headline text-5xl mb-4 text-brand-gold">Asmara Hotel, Pangani</h1>
                 <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
-                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">
                     The same legendary Lake Victoria tilapia and Mama Oliech recipes our Kilimani guests love, now
                     served in Pangani — with a full bar and lounge that keeps the evening going after the kitchen
                     winds down.
@@ -116,7 +117,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="rounded-2xl overflow-hidden organic-border reveal" style="aspect-ratio: 21/9;">
                 <img class="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxNqzFbwFpldGzSCuuVMcQVzSwO9lz8UEYcJen8A8k6fCkfRaXvh_LQ8WkEqZ95zwo89SXGiKYjKAhRaYfigww_md-INR916OUWOHjOiYel6kme0_i3FBw_jnxLzLuKeErKrqLu4o1GoqvkUfrmW2qHZ676_0r37y8loJGhvUlZ6rYSm08M-k7wLIvvVyywlMDm6ThTGiu5xwJneCj6GyXGN6L6aggiVookmprHQEyFBnS7e2TETbw"
+                    src="images/restaurant_ambiance_1784113355465.png"
                     alt="Warm restaurant interior with wooden tables set for guests" />
             </div>
         </div>
@@ -166,41 +167,41 @@
     </section>
 
     <!-- Popular Here -->
-    <section class="bg-surface-container py-section-gap-mobile" style="background-color: var(--surface-container);">
+    <section class="py-section-gap-mobile border-t border-white/10 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <h2 class="font-headline text-4xl mb-4">Popular at Our Pangani Table</h2>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">Popular at Our Pangani Table</h2>
                 <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
-                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">
                     Every branch shares the same kitchen standards. These are the dishes Pangani regulars order most, before the bar takes over for the evening.
                 </p>
             </div>
             <div class="grid-3 reveal">
-                <div class="card">
+                <div class="card glass-dark border border-white/10 p-6 rounded-2xl">
                     <div class="card-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXtTWMi6q7mgXF28CjVVVB9xh_n2xTuMhevNiPI-qzYlW5MW8UNBJA5uY3PddKMcCq-ziaDp6shRR-cEnwiPmvmlqnzSldn0X2zwRqHBld8VTSByJOhhVwsyyJqUp8wwr3ZrXMISKqaBgR6USA6br_gFlAi5a3Qpxa_vCBsQY1QVsyrMSoOm7RtYg7S5g_haMEnbqLxZFCs3e4qlp_EKpon8oANtPMtmmmm9gCN74bEkVwSAPnl0XW" alt="Whole fried tilapia" />
+                        <img src="images/whole_fried_tilapia_1784113321295.png" alt="Whole fried tilapia" />
                     </div>
-                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">Bestseller</span>
-                    <h3 class="font-headline text-xl mb-2">Whole Tilapia (Dry Fry)</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70">Fresh from Lake Victoria, seasoned with our
+                    <span class="badge border border-white/20 text-brand-bg bg-white/5" style="margin-bottom: 0.75rem; display:inline-block;">Bestseller</span>
+                    <h3 class="font-headline text-xl mb-2 text-brand-gold">Whole Tilapia (Dry Fry)</h3>
+                    <p class="font-body text-sm text-brand-bg/70">Fresh from Lake Victoria, seasoned with our
                         secret salt rub and deep-fried to golden perfection.</p>
                 </div>
-                <div class="card">
+                <div class="card glass-dark border border-white/10 p-6 rounded-2xl">
                     <div class="card-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKu2uOyOXITPsJ-kAp8tXar2JNtJMbhJJDXRSub7PYKHqsyCrv5RDiq5SXE-A5HAl_ewskWkpJ75ppwrEKHutogGUjSqQEmHV8H0iFqUstGoq5DI-SlF6x6SpU6vzd9OAg4x_OX7zVCL53LwMk1WiECMGAPq_j_tMSBIwpoEkhX7t83wFtN2wVYO7Y4iRLD1uSDKYXqkbi9KsIbnQ_084zS65uUzp6-NwoWvtNAwnS34AG_COdx-rs" alt="Tilapia wet fry in gravy" />
+                        <img src="images/tilapia_wet_fry_1784113332545.png" alt="Tilapia wet fry in gravy" />
                     </div>
-                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">House Special</span>
-                    <h3 class="font-headline text-xl mb-2">Whole Tilapia (Wet Fry)</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70">Simmered in a rich tomato and onion gravy,
+                    <span class="badge border border-white/20 text-brand-bg bg-white/5" style="margin-bottom: 0.75rem; display:inline-block;">House Special</span>
+                    <h3 class="font-headline text-xl mb-2 text-brand-gold">Whole Tilapia (Wet Fry)</h3>
+                    <p class="font-body text-sm text-brand-bg/70">Simmered in a rich tomato and onion gravy,
                         best enjoyed with a warm dome of ugali.</p>
                 </div>
-                <div class="card">
+                <div class="card glass-dark border border-white/10 p-6 rounded-2xl">
                     <div class="card-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSswVC4l5qrk4dO6TXNRNzp7k1hI-8phbCxB0BN_3MDoDW-rtQW1jNSVdt_VAh8d41b6ip6kRRXgmE8Ua5d093ryYPL4dPMstqzn7eYasMdgFcbfP5OC_GJ_O3Td__5IO3YSDmj1lV-ueWGizZyK2foj2_YuVS4xahi_J85Z3FOx4QzxulieQTmBvsnywPHCOQUIjVCoI7GSSRw5VYs27vQHb3wEx97O4AG5BoJiodyif2O0B6p05E" alt="Traditional ugali" />
+                        <img src="images/traditional_ugali_1784113343752.png" alt="Traditional ugali" />
                     </div>
-                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">Traditional Side</span>
-                    <h3 class="font-headline text-xl mb-2">Ugali & Sukuma Wiki</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70">A perfectly textured dome of ugali paired with
+                    <span class="badge border border-white/20 text-brand-bg bg-white/5" style="margin-bottom: 0.75rem; display:inline-block;">Traditional Side</span>
+                    <h3 class="font-headline text-xl mb-2 text-brand-gold">Ugali & Sukuma Wiki</h3>
+                    <p class="font-body text-sm text-brand-bg/70">A perfectly textured dome of ugali paired with
                         fresh, lightly sautéed collard greens.</p>
                 </div>
             </div>
@@ -211,13 +212,13 @@
     </section>
 
     <!-- Bar & Lounge Section (Pangani only) -->
-    <section class="py-section-gap-mobile" style="background-color: var(--brand-charcoal); color: #fff;">
+    <section class="py-section-gap-mobile border-t border-white/10 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <span class="bar-badge mb-4" style="display:inline-block;">Pangani Exclusive</span>
-                <h2 class="font-headline text-4xl mb-4" style="color:#fff;">The Bar & Lounge</h2>
+                <span class="bar-badge border border-brand-gold/30 bg-brand-gold/10 text-brand-gold mb-4" style="display:inline-block; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Pangani Exclusive</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">The Bar & Lounge</h2>
                 <div class="w-24 h-1 bg-brand-gold mx-auto mb-6"></div>
-                <p class="font-body max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+                <p class="font-body max-w-xl mx-auto text-brand-bg/80">
                     When the kitchen slows down, the bar picks up. Pangani is the only Asmara Hotel branch with a
                     full bar and lounge — cold beers, house cocktails and a good playlist, right through to closing.
                 </p>
@@ -225,7 +226,7 @@
 
             <div class="grid-3 reveal">
                 <!-- Cocktails -->
-                <div class="bar-menu-card">
+                <div class="bar-menu-card glass-dark border border-white/10 rounded-2xl p-6">
                     <h3 class="font-headline text-xl mb-4">Signature Cocktails</h3>
                     <div class="menu-item-row">
                         <span class="menu-item-name">Dawa</span>
@@ -250,7 +251,7 @@
                 </div>
 
                 <!-- Beers & Spirits -->
-                <div class="bar-menu-card">
+                <div class="bar-menu-card glass-dark border border-white/10 rounded-2xl p-6">
                     <h3 class="font-headline text-xl mb-4">Beers & Spirits</h3>
                     <div class="menu-item-row">
                         <span class="menu-item-name">Tusker Lager (500ml)</span>
@@ -275,7 +276,7 @@
                 </div>
 
                 <!-- Bar Bites -->
-                <div class="bar-menu-card">
+                <div class="bar-menu-card glass-dark border border-white/10 rounded-2xl p-6">
                     <h3 class="font-headline text-xl mb-4">Bar Bites</h3>
                     <div class="menu-item-row">
                         <span class="menu-item-name">Spiced Fish Bites</span>

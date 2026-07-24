@@ -43,40 +43,39 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="icon" type="image/png" href="favicon.png" />
 </head>
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
+<body class="bg-brand-charcoal text-brand-bg font-body selection:bg-brand-terracotta selection:text-white">
     <div class="grain"></div>
     
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+    <header class="fixed w-full top-0 z-50 bg-brand-charcoal/90 backdrop-blur-md border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
                 ASMARA HOTEL
             </a>
             <div class="hidden md:flex gap-8 items-center">
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
-                <a class="font-semibold text-sm text-brand-terracotta transition-colors" href="menu.html">Menu</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="index.html#famous">Famous Guests</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="events.html">Events</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="contact.html">Location</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="events.html">Events</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="contact.html">Location</a>
                 
                 <!-- Desktop Cart Icon -->
-                <button id="cart-toggle-btn" class="relative p-2 text-brand-charcoal hover:text-brand-terracotta transition-colors flex items-center gap-1" aria-label="Open shopping cart">
+                <button id="cart-toggle-btn" class="relative p-2 text-brand-bg hover:text-brand-terracotta transition-colors flex items-center gap-1" aria-label="Open shopping cart">
                     <span class="material-symbols-outlined">shopping_cart</span>
-                    <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-brand-terracotta text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-brand-bg opacity-0 transition-opacity">0</span>
+                    <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-brand-terracotta text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-brand-charcoal opacity-0 transition-opacity">0</span>
                 </button>
 
-                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm hover:scale-95 transition-all" href="index.html#reservation">Reserve Now</a>
+                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm glow-terracotta transition-all" href="index.html#reservation">Reserve Now</a>
             </div>
             
             <!-- Mobile Header Controls -->
             <div class="flex items-center gap-2 md:hidden">
-                <button id="cart-toggle-btn-mobile" class="relative p-2 text-brand-charcoal hover:text-brand-terracotta transition-colors flex items-center" aria-label="Open shopping cart">
+                <button id="cart-toggle-btn-mobile" class="relative p-2 text-brand-bg hover:text-brand-terracotta transition-colors flex items-center" aria-label="Open shopping cart">
                     <span class="material-symbols-outlined">shopping_cart</span>
-                    <span id="cart-count-badge-mobile" class="absolute -top-1 -right-1 bg-brand-terracotta text-white text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center border border-brand-bg opacity-0 transition-opacity">0</span>
+                    <span id="cart-count-badge-mobile" class="absolute -top-1 -right-1 bg-brand-terracotta text-white text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center border border-brand-charcoal opacity-0 transition-opacity">0</span>
                 </button>
-                <button class="mobile-nav-toggle p-2 text-brand-charcoal">
+                <button class="mobile-nav-toggle p-2 text-brand-bg">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
             </div>
@@ -96,27 +95,28 @@
     </div>
 
     <!-- Menu Section -->
-    <section class="pt-32 pb-24">
-        <div class="max-w-7xl mx-auto px-6">
+    <section class="pt-32 pb-24 relative reservation-colorful-bg">
+        <div class="absolute inset-0 bg-brand-charcoal/80"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16 reveal">
-                <h1 class="font-headline text-5xl mb-4">Our Culinary Heritage</h1>
+                <h1 class="font-headline text-5xl mb-4 text-brand-gold">Our Culinary Heritage</h1>
                 <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
-                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">
                     Enjoy our fresh, locally sourced dishes cooked with love. Explore our famous fish specialties, authentic traditional sides, and cooling drinks.
                 </p>
             </div>
 
             <!-- Menu Search & Filter Controls -->
             <div class="menu-controls reveal">
-                <div class="search-bar-wrapper">
-                    <span class="material-symbols-outlined">search</span>
-                    <input id="menu-search" type="text" placeholder="Search our signature dishes..." />
+                <div class="search-bar-wrapper dark-form glass-dark">
+                    <span class="material-symbols-outlined text-brand-gold">search</span>
+                    <input id="menu-search" type="text" placeholder="Search our signature dishes..." class="text-brand-bg bg-transparent placeholder-brand-bg/50" />
                 </div>
                 <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All Items</button>
-                    <button class="filter-btn" data-filter="fish">Lakeside Fish</button>
-                    <button class="filter-btn" data-filter="sides">Traditional Sides</button>
-                    <button class="filter-btn" data-filter="drinks">Beverages</button>
+                    <button class="filter-btn active text-brand-bg hover:text-brand-gold border-white/20 glass-dark" data-filter="all">All Items</button>
+                    <button class="filter-btn text-brand-bg hover:text-brand-gold border-white/20 glass-dark" data-filter="fish">Lakeside Fish</button>
+                    <button class="filter-btn text-brand-bg hover:text-brand-gold border-white/20 glass-dark" data-filter="sides">Traditional Sides</button>
+                    <button class="filter-btn text-brand-bg hover:text-brand-gold border-white/20 glass-dark" data-filter="drinks">Beverages</button>
                 </div>
             </div>
 
@@ -126,12 +126,12 @@
             </div>
             
             <!-- Catering Announcement -->
-            <div class="bg-brand-charcoal text-white rounded-2xl p-8 md:p-12 mt-16 flex flex-col md:flex-row justify-between items-center gap-8 reveal">
+            <div class="glass-dark border border-brand-terracotta/30 glow-terracotta text-white rounded-2xl p-8 md:p-12 mt-16 flex flex-col md:flex-row justify-between items-center gap-8 reveal">
                 <div class="flex-1">
-                    <h2 class="font-headline text-2xl md:text-3xl mb-4">Hosting a Large Event?</h2>
+                    <h2 class="font-headline text-2xl md:text-3xl mb-4 text-brand-gold">Hosting a Large Event?</h2>
                     <p class="opacity-80 text-sm md:text-base">We provide full catering services for corporate functions, family reunions, and large groups. Bring the legendary taste of Asmara Hotel to your guests!</p>
                 </div>
-                <a class="bg-brand-terracotta text-white px-8 py-4 rounded-lg font-semibold text-center hover:scale-105 transition-all whitespace-nowrap" href="https://wa.me/254723925604" target="_blank">
+                <a class="bg-brand-terracotta text-white px-8 py-4 rounded-lg font-semibold text-center glow-terracotta transition-all whitespace-nowrap" href="https://wa.me/254723925604" target="_blank">
                     Inquire on WhatsApp
                 </a>
             </div>

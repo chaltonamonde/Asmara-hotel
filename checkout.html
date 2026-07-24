@@ -60,24 +60,26 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .checkout-summary-card {
-            background-color: var(--surface-white);
-            border: 1px solid var(--border-color);
+            background-color: rgba(43, 36, 32, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            color: var(--brand-bg);
         }
     </style>
 </head>
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white relative min-h-screen">
+<body class="bg-brand-charcoal text-brand-bg font-body selection:bg-brand-terracotta selection:text-white relative min-h-screen flex flex-col">
     <div class="grain"></div>
     
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+    <header class="fixed w-full top-0 z-50 bg-brand-charcoal/90 backdrop-blur-md border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
                 ASMARA HOTEL
             </a>
             <div class="flex gap-4 items-center">
-                <a href="menu.html" class="font-semibold text-sm hover:text-brand-terracotta transition-colors flex items-center gap-1">
+                <a href="menu.html" class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors flex items-center gap-1">
                     <span class="material-symbols-outlined text-[18px]">arrow_back</span> Back to Menu
                 </a>
             </div>
@@ -85,8 +87,10 @@
     </header>
 
     <!-- Main Container -->
-    <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 relative z-10" id="checkout-main-content">
-        <div class="mb-8">
+    <main class="w-full relative z-10 flex-grow hero-colorful-bg min-h-[100vh]" id="checkout-main-content">
+        <div class="absolute inset-0 bg-brand-charcoal/80 z-0"></div>
+        <div class="max-w-6xl mx-auto px-6 pt-32 pb-24 relative z-10">
+            <div class="mb-8">
             <h1 class="font-headline text-4xl font-bold tracking-tight mb-2">Secure Checkout</h1>
             <p class="text-sm opacity-85">Review your Lakeside fish order and choose your preferred delivery method.</p>
         </div>
@@ -94,12 +98,12 @@
         <div class="grid lg:grid-cols-12 gap-8 items-start">
             
             <!-- Left: Checkout Forms (lg:col-span-7) -->
-            <section class="lg:col-span-7 bg-white p-6 md:p-8 rounded-2xl border border-brand-charcoal/5 shadow-xl">
+            <section class="lg:col-span-7 glass-dark p-6 md:p-8 rounded-2xl border border-white/10 shadow-xl relative z-10">
                 
                 <!-- Order Type Segmented Tabs -->
                 <div class="mb-6">
-                    <label class="block text-xs font-semibold uppercase tracking-wider mb-3 text-brand-charcoal/70">Order Type</label>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 bg-brand-bg p-1 rounded-xl border border-brand-charcoal/5">
+                    <label class="block text-xs font-semibold uppercase tracking-wider mb-3 text-brand-bg/70">Order Type</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 bg-black/20 p-1 rounded-xl border border-white/5">
                         <button type="button" id="tab-delivery" class="checkout-tab active py-2.5 rounded-lg text-xs font-semibold border border-transparent text-center" data-type="delivery">
                             🛵 Delivery
                         </button>
@@ -218,8 +222,8 @@
             </section>
             
             <!-- Right: Order Summary (lg:col-span-5) -->
-            <section class="lg:col-span-5 checkout-summary-card p-6 flex flex-col gap-6">
-                <h3 class="font-headline font-bold text-xl border-b border-brand-charcoal/10 pb-3 text-brand-charcoal/90">Order Summary</h3>
+            <section class="lg:col-span-5 checkout-summary-card p-6 flex flex-col gap-6 relative z-10">
+                <h3 class="font-headline font-bold text-xl border-b border-white/10 pb-3 text-brand-bg/90">Order Summary</h3>
                 
                 <!-- Items list -->
                 <div class="flex flex-col gap-4 max-h-[300px] overflow-y-auto pr-2" id="checkout-summary-items">
@@ -227,7 +231,7 @@
                 </div>
                 
                 <!-- Pricing Totals -->
-                <div class="border-t border-brand-charcoal/10 pt-4 flex flex-col gap-3">
+                <div class="border-t border-white/10 pt-4 flex flex-col gap-3">
                     <div class="flex justify-between items-center text-sm font-medium">
                         <span class="opacity-75">Items Total</span>
                         <span id="summary-subtotal">KES 0</span>
@@ -236,18 +240,19 @@
                         <span class="opacity-75">Service / Delivery Fee</span>
                         <span id="summary-fee">KES 0</span>
                     </div>
-                    <div class="flex justify-between items-center text-lg font-bold border-t border-brand-charcoal/5 pt-3">
+                    <div class="flex justify-between items-center text-lg font-bold border-t border-white/5 pt-3">
                         <span>Total Bill</span>
                         <span class="text-brand-terracotta" id="summary-total">KES 0</span>
                     </div>
                 </div>
 
                 <!-- Action Button -->
-                <button type="submit" form="restaurant-checkout-form" id="checkout-submit-btn" class="bg-brand-terracotta text-white w-full py-4 rounded-xl font-headline text-lg hover:scale-[0.98] active:scale-95 transition-all flex justify-center items-center gap-2 hover:bg-opacity-95 shadow-lg">
+                <button type="submit" form="restaurant-checkout-form" id="checkout-submit-btn" class="bg-brand-terracotta text-white w-full py-4 rounded-xl font-headline text-lg glow-terracotta hover:scale-[0.98] active:scale-95 transition-all flex justify-center items-center gap-2 hover:bg-opacity-95 shadow-lg">
                     Confirm &amp; Pay KES 0
                 </button>
             </section>
             
+        </div>
         </div>
     </main>
 

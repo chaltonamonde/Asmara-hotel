@@ -44,18 +44,24 @@
         }
 
         .profile-card {
-            background: #fff;
+            background: rgba(43, 36, 32, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             padding: 1.75rem;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             margin-bottom: 1.5rem;
+            color: var(--brand-bg);
+            position: relative;
+            z-index: 10;
         }
 
         .history-item {
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 1rem 1.25rem;
             margin-bottom: 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .status-pill {
@@ -76,9 +82,10 @@
     </style>
 </head>
 
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
+<body class="bg-brand-charcoal text-brand-bg font-body selection:bg-brand-terracotta selection:text-white">
+    <div class="grain"></div>
 
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+    <header class="fixed w-full top-0 z-50 bg-brand-charcoal/90 backdrop-blur-md border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
                 ASMARA HOTEL
@@ -95,14 +102,15 @@
         </nav>
     </header>
 
-    <main class="profile-shell">
+    <main class="profile-shell hero-colorful-bg relative">
+        <div class="absolute inset-0 bg-brand-charcoal/80 z-0"></div>
         <div class="profile-card" id="profile-header-card">
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
                 <div>
                     <h1 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;">
                         My Account
                     </h1>
-                    <p id="profile-email" style="color:#888;font-size:0.9rem;margin-top:0.25rem;"></p>
+                    <p id="profile-email" style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-top:0.25rem;"></p>
                 </div>
                 <button id="profile-logout-btn" style="
                     background: transparent;
@@ -122,7 +130,7 @@
                 🍽️ My Orders
             </h2>
             <div id="orders-list">
-                <p style="color:#888;font-size:0.9rem;">Loading your orders...</p>
+                <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;">Loading your orders...</p>
             </div>
         </div>
 
@@ -131,7 +139,7 @@
                 📅 My Reservations
             </h2>
             <div id="reservations-list">
-                <p style="color:#888;font-size:0.9rem;">Loading your reservations...</p>
+                <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;">Loading your reservations...</p>
             </div>
         </div>
     </main>
@@ -155,7 +163,7 @@
         function renderOrders(orders) {
             const container = document.getElementById('orders-list');
             if (!orders.length) {
-                container.innerHTML = '<p style="color:#888;font-size:0.9rem;">No orders yet — your food orders will show up here once you check out.</p>';
+                container.innerHTML = '<p style="color:rgba(255,255,255,0.7);font-size:0.9rem;">No orders yet — your food orders will show up here once you check out.</p>';
                 return;
             }
 
@@ -169,8 +177,8 @@
                         <div style="display:flex;justify-content:space-between;align-items:start;gap:1rem;flex-wrap:wrap;">
                             <div>
                                 <div style="font-weight:700;font-size:0.95rem;">${order.id}</div>
-                                <div style="font-size:0.85rem;color:#666;margin-top:0.2rem;">${itemsSummary || 'Items unavailable'}</div>
-                                <div style="font-size:0.8rem;color:#999;margin-top:0.3rem;">${new Date(order.created_at).toLocaleString()}</div>
+                                <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);margin-top:0.2rem;">${itemsSummary || 'Items unavailable'}</div>
+                                <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:0.3rem;">${new Date(order.created_at).toLocaleString()}</div>
                             </div>
                             <div style="text-align:right;">
                                 <span class="status-pill ${statusClass(order.status)}">${order.status}</span>
@@ -185,7 +193,7 @@
         function renderReservations(reservations) {
             const container = document.getElementById('reservations-list');
             if (!reservations.length) {
-                container.innerHTML = '<p style="color:#888;font-size:0.9rem;">No reservations yet — book a table and it\'ll show up here.</p>';
+                container.innerHTML = '<p style="color:rgba(255,255,255,0.7);font-size:0.9rem;">No reservations yet — book a table and it\'ll show up here.</p>';
                 return;
             }
 
@@ -194,10 +202,10 @@
                     <div style="display:flex;justify-content:space-between;align-items:start;gap:1rem;flex-wrap:wrap;">
                         <div>
                             <div style="font-weight:700;font-size:0.95rem;">${res.id}</div>
-                            <div style="font-size:0.85rem;color:#666;margin-top:0.2rem;">
+                            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);margin-top:0.2rem;">
                                 ${res.num_guests} guests · ${res.reservation_date} at ${res.reservation_time}
                             </div>
-                            ${res.special_requests && res.special_requests !== 'None' ? `<div style="font-size:0.8rem;color:#999;margin-top:0.2rem;">"${res.special_requests}"</div>` : ''}
+                            ${res.special_requests && res.special_requests !== 'None' ? `<div style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:0.2rem;">"${res.special_requests}"</div>` : ''}
                         </div>
                         <span class="status-pill ${statusClass(res.status)}">${res.status}</span>
                     </div>

@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Asmara Hotel Lavington | Restaurant & Location</title>
+    <title>Asmara Hotel Lavington | Family Dining, Kids Play Area & Location</title>
     <meta
-        content="Visit Asmara Hotel's Lavington branch for the same legendary Lake Victoria tilapia and traditional Kenyan dishes, served in one of Nairobi's favourite residential neighbourhoods. Get directions, hours and menu highlights."
+        content="Visit Asmara Hotel's Lavington branch on Othaya Road for authentic Eritrean and continental cuisine in a cozy, family-friendly setting with a dedicated kids' play area. Open daily 8 AM – 10:30 PM."
         name="description" />
-    <meta property="og:title" content="Asmara Hotel Lavington | Restaurant & Location" />
-    <meta property="og:description" content="Visit Asmara Hotel's Lavington branch for the same legendary Lake Victoria tilapia and traditional Kenyan dishes, served in one of Nairobi's favourite residential neighbourhoods." />
+    <meta property="og:title" content="Asmara Hotel Lavington | Family Dining & Location" />
+    <meta property="og:description" content="Authentic Eritrean & continental dining on Othaya Road, Lavington. Family-friendly with kids' play area, trampoline & bouncing castle. Open daily." />
     <meta property="og:image" content="https://asmarahotel.com/images/og-image.jpg" />
     <meta property="og:url" content="https://asmarahotel.com/lavington.html" />
     <meta property="og:type" content="restaurant" />
@@ -50,27 +50,148 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="icon" type="image/png" href="favicon.png" />
+
+    <style>
+        /* Branch-page extra styles */
+        .story-section {
+            background: linear-gradient(135deg, rgba(217,105,45,0.08) 0%, rgba(232,184,75,0.05) 100%);
+            border: 1px solid rgba(217,105,45,0.15);
+            border-radius: 1.5rem;
+            padding: 3rem;
+        }
+        .story-quote {
+            font-family: var(--font-headline);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--brand-gold);
+            border-left: 4px solid var(--brand-terracotta);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            line-height: 1.7;
+        }
+        .amenity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+        .amenity-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .amenity-card:hover {
+            background: rgba(217,105,45,0.12);
+            border-color: rgba(217,105,45,0.3);
+            transform: translateY(-3px);
+        }
+        .amenity-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .review-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            position: relative;
+        }
+        .review-card::before {
+            content: '"';
+            font-family: var(--font-headline);
+            font-size: 5rem;
+            color: var(--brand-terracotta);
+            opacity: 0.3;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            line-height: 1;
+        }
+        .stars {
+            color: var(--brand-gold);
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+        .reviewer-name {
+            font-weight: 700;
+            color: var(--brand-gold);
+            font-size: 0.9rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .story-section { padding: 1.5rem; }
+            .amenity-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .gallery-img {
+            border-radius: 1rem;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-img:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .gallery-img:hover img { transform: scale(1.08); }
+        .branch-stat {
+            text-align: center;
+            padding: 1.5rem;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        .branch-stat:last-child { border-right: none; }
+        .branch-stat .stat-num {
+            font-family: var(--font-headline);
+            font-size: 2.5rem;
+            color: var(--brand-gold);
+            font-weight: 700;
+        }
+        .branch-stat .stat-label {
+            font-size: 0.85rem;
+            color: rgba(251,246,238,0.6);
+            margin-top: 0.25rem;
+        }
+        .section-pill {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
+<body class="bg-brand-charcoal text-brand-bg font-body selection:bg-brand-terracotta selection:text-white">
     <div class="grain"></div>
 
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+    <header class="fixed w-full top-0 z-50 bg-brand-charcoal/90 backdrop-blur-md border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
                 ASMARA HOTEL
             </a>
             <div class="hidden md:flex gap-8 items-center">
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
                 <a class="font-semibold text-sm text-brand-terracotta transition-colors" href="contact.html">Locations</a>
-                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm hover:scale-95 transition-all" href="index.html#reservation">Reserve Now</a>
+                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm glow-terracotta transition-all" href="index.html#reservation">Reserve Now</a>
             </div>
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-nav-toggle md:hidden p-2 text-brand-charcoal">
+            <button class="mobile-nav-toggle md:hidden p-2 text-brand-bg">
                 <span class="material-symbols-outlined">menu</span>
             </button>
         </nav>
@@ -88,16 +209,15 @@
     </div>
 
     <!-- Hero -->
-    <section class="pt-32 pb-16">
-        <div class="max-w-7xl mx-auto px-6">
+    <section class="pt-32 pb-16 hero-colorful-bg relative">
+        <div class="absolute inset-0 bg-brand-charcoal/80"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-10 reveal">
-                <span class="badge mb-4" style="display:inline-block;">Lavington Branch</span>
-                <h1 class="font-headline text-5xl mb-4">Asmara Hotel, Lavington</h1>
+                <span class="badge mb-4 border border-brand-terracotta/30 text-brand-bg bg-brand-terracotta/20" style="display:inline-block;">Lavington Branch — Family Favourite</span>
+                <h1 class="font-headline text-5xl mb-4 text-brand-gold">Asmara Hotel, Lavington</h1>
                 <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
-                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
-                    The same legendary Lake Victoria tilapia and Mama Oliech recipes our Kilimani guests love, now
-                    served just off James Gichuru Road in Lavington. A firm favourite for weekday lunches and
-                    relaxed weekend family dinners.
+                <p class="font-body text-brand-bg/80 max-w-2xl mx-auto">
+                    Tucked along Othaya Road in one of Nairobi's most beloved residential neighbourhoods, our Lavington branch has become the go-to spot for families, business lunch crowds, and weekend diners seeking authentic Eritrean flavours in a warm, cozy setting.
                 </p>
             </div>
 
@@ -116,22 +236,143 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="rounded-2xl overflow-hidden organic-border reveal" style="aspect-ratio: 21/9;">
                 <img class="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxNqzFbwFpldGzSCuuVMcQVzSwO9lz8UEYcJen8A8k6fCkfRaXvh_LQ8WkEqZ95zwo89SXGiKYjKAhRaYfigww_md-INR916OUWOHjOiYel6kme0_i3FBw_jnxLzLuKeErKrqLu4o1GoqvkUfrmW2qHZ676_0r37y8loJGhvUlZ6rYSm08M-k7wLIvvVyywlMDm6ThTGiu5xwJneCj6GyXGN6L6aggiVookmprHQEyFBnS7e2TETbw"
-                    alt="Warm restaurant interior with wooden tables set for guests" />
+                    src="images/restaurant_ambiance_1784113355465.png"
+                    alt="Asmara Hotel Lavington warm restaurant interior with wooden tables set for families" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Branch Quick Stats -->
+    <section class="pb-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="glass-dark border border-white/10 rounded-2xl overflow-hidden reveal">
+                <div class="grid grid-cols-2 md:grid-cols-4">
+                    <div class="branch-stat">
+                        <div class="stat-num">2009</div>
+                        <div class="stat-label">Year Established</div>
+                    </div>
+                    <div class="branch-stat">
+                        <div class="stat-num">4.5★</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                    <div class="branch-stat">
+                        <div class="stat-num">8AM</div>
+                        <div class="stat-label">Opens Daily</div>
+                    </div>
+                    <div class="branch-stat">
+                        <div class="stat-num">250+</div>
+                        <div class="stat-label">Covers Per Day</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="pb-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <span class="section-pill border border-brand-terracotta/30 text-brand-terracotta bg-brand-terracotta/10">The Lavington Story</span>
+                    <h2 class="font-headline text-4xl mb-6 text-brand-gold">Where Othaya Road Found Its Flavour</h2>
+                    <div class="story-section">
+                        <p class="font-body text-brand-bg/80 leading-relaxed mb-4">
+                            When Asmara Restaurant first opened its doors in Pangani in 2009, bringing the warmth of Eritrean hospitality to Nairobi, few could have predicted just how deeply the brand would embed itself into the city's dining culture. The Lavington branch arrived as a natural next step — a neighbourhood craving authentic, soul-warming food didn't have to travel far anymore.
+                        </p>
+                        <blockquote class="story-quote">
+                            "We wanted Lavington families to feel at home the moment they walked through the door — the same way our grandmothers welcomed everyone in Asmara."
+                        </blockquote>
+                        <p class="font-body text-brand-bg/80 leading-relaxed mb-4">
+                            Located on Othaya Road in the heart of Lavington, this branch was designed with the neighbourhood in mind. Families with young children, professionals working from the nearby offices, and the weekend lunch crowd all found a comfortable corner here. The kids' play area — complete with a trampoline and bouncing castle — became legendary among Nairobi parents, who could finally savour a meal uninterrupted while their children played safely in sight.
+                        </p>
+                        <p class="font-body text-brand-bg/80 leading-relaxed">
+                            Today, the Lavington branch remains one of the most beloved in the Asmara family, known for its impeccable service, generous portions, and the unmistakable aroma of injera that drifts through the open windows every morning.
+                        </p>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <div class="rounded-2xl overflow-hidden" style="aspect-ratio: 3/4;">
+                        <img
+                            src="images/lavington_branch_interior_1784108805395.png"
+                            alt="Asmara Lavington warm afro-contemporary interior with families dining"
+                            class="w-full h-full object-cover" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities & Services -->
+    <section class="py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="section-pill border border-brand-gold/30 text-brand-gold bg-brand-gold/10">Amenities & Services</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">Everything You Need for a Perfect Visit</h2>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">
+                    The Lavington branch is designed to be your most comfortable dining destination — for families, solo diners, and everyone in between.
+                </p>
+            </div>
+            <div class="amenity-grid reveal">
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-terracotta);">child_care</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Kids' Play Area</h4>
+                    <p class="text-brand-bg/60 text-sm">Trampoline & bouncing castle for children while parents dine in peace</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-terracotta);">outdoor_grill</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Indoor & Outdoor Seating</h4>
+                    <p class="text-brand-bg/60 text-sm">Cozy indoor spaces and fresh-air outdoor tables for your preference</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-terracotta);">delivery_dining</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Delivery Available</h4>
+                    <p class="text-brand-bg/60 text-sm">Order via Uber Eats and enjoy Asmara at home in Lavington</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-terracotta);">wifi</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Free Wi-Fi</h4>
+                    <p class="text-brand-bg/60 text-sm">High-speed complimentary Wi-Fi — perfect for business lunches</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-terracotta);">local_parking</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Secure Parking</h4>
+                    <p class="text-brand-bg/60 text-sm">Ample secure parking on-site for all guests</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-terracotta);">accessible</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Stroller Friendly</h4>
+                    <p class="text-brand-bg/60 text-sm">Easy access for prams and wheelchairs throughout the venue</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-terracotta);">restaurant_menu</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Full Day Dining</h4>
+                    <p class="text-brand-bg/60 text-sm">Breakfast, lunch, and dinner — open from 8:00 AM daily</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-terracotta);">groups</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Group Bookings</h4>
+                    <p class="text-brand-bg/60 text-sm">Private dining arrangements for office parties and celebrations</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Location Info Section -->
-    <section class="pb-24">
-        <div class="max-w-7xl mx-auto px-6">
+    <section class="pb-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 pt-24">
+            <div class="text-center mb-16 reveal">
+                <span class="section-pill border border-brand-terracotta/30 text-brand-terracotta bg-brand-terracotta/10">Find Us</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">Location & Contact Details</h2>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto"></div>
+            </div>
             <div class="contact-grid" style="grid-template-columns: 1fr; max-width: 900px; margin: 0 auto;">
                 <div class="contact-info-block reveal">
                     <div class="info-item">
                         <div class="info-icon"><span class="material-symbols-outlined">location_on</span></div>
                         <div class="info-text">
                             <h3>Our Location</h3>
-                            <p>James Gichuru Road, Lavington</p>
+                            <p>Othaya Road, Lavington</p>
                             <p>Nairobi, Kenya</p>
                         </div>
                     </div>
@@ -140,15 +381,22 @@
                         <div class="info-text">
                             <h3>Operating Hours</h3>
                             <p style="font-weight: 600; color: var(--brand-green);">Open Daily (Monday - Sunday)</p>
-                            <p>9:00 AM - 10:00 PM</p>
+                            <p>8:00 AM – 10:30 PM</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-icon"><span class="material-symbols-outlined">call</span></div>
                         <div class="info-text">
                             <h3>Get In Touch</h3>
-                            <p>Phone: <a href="tel:+254723925604">+254 723 925 604</a></p>
-                            <p>Email: <a href="mailto:info@asmarahotel.com">info@asmarahotel.com</a></p>
+                            <p>Phone: <a href="tel:+254700458429">+254 700 458 429</a></p>
+                            <p>Email: <a href="mailto:sales@asmara.co.ke">sales@asmara.co.ke</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><span class="material-symbols-outlined">directions_car</span></div>
+                        <div class="info-text">
+                            <h3>Getting Here</h3>
+                            <p>Turn off James Gichuru Road onto Othaya Road — we are on the left, opposite the Shell station. Ample parking available.</p>
                         </div>
                     </div>
                     <div class="map-container" id="map"></div>
@@ -158,46 +406,118 @@
     </section>
 
     <!-- Popular Here -->
-    <section class="bg-surface-container py-section-gap-mobile" style="background-color: var(--surface-container);">
+    <section class="py-section-gap-mobile border-t border-white/10 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <h2 class="font-headline text-4xl mb-4">Popular at Our Lavington Table</h2>
+                <span class="section-pill border border-brand-terracotta/30 text-brand-terracotta bg-brand-terracotta/10">Fan Favourites</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">Popular at Our Lavington Table</h2>
                 <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
-                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">
                     Every branch shares the same kitchen standards. These are the dishes Lavington regulars order most.
                 </p>
             </div>
             <div class="grid-3 reveal">
-                <div class="card">
+                <div class="card glass-dark border border-white/10 p-6 rounded-2xl">
                     <div class="card-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXtTWMi6q7mgXF28CjVVVB9xh_n2xTuMhevNiPI-qzYlW5MW8UNBJA5uY3PddKMcCq-ziaDp6shRR-cEnwiPmvmlqnzSldn0X2zwRqHBld8VTSByJOhhVwsyyJqUp8wwr3ZrXMISKqaBgR6USA6br_gFlAi5a3Qpxa_vCBsQY1QVsyrMSoOm7RtYg7S5g_haMEnbqLxZFCs3e4qlp_EKpon8oANtPMtmmmm9gCN74bEkVwSAPnl0XW" alt="Whole fried tilapia" />
+                        <img src="images/whole_fried_tilapia_1784113321295.png" alt="Whole fried tilapia" />
                     </div>
-                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">Bestseller</span>
-                    <h3 class="font-headline text-xl mb-2">Whole Tilapia (Dry Fry)</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70">Fresh from Lake Victoria, seasoned with our
+                    <span class="badge border border-white/20 text-brand-bg bg-white/5" style="margin-bottom: 0.75rem; display:inline-block;">Bestseller</span>
+                    <h3 class="font-headline text-xl mb-2 text-brand-gold">Whole Tilapia (Dry Fry)</h3>
+                    <p class="font-body text-sm text-brand-bg/70">Fresh from Lake Victoria, seasoned with our
                         secret salt rub and deep-fried to golden perfection.</p>
                 </div>
-                <div class="card">
+                <div class="card glass-dark border border-white/10 p-6 rounded-2xl">
                     <div class="card-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKu2uOyOXITPsJ-kAp8tXar2JNtJMbhJJDXRSub7PYKHqsyCrv5RDiq5SXE-A5HAl_ewskWkpJ75ppwrEKHutogGUjSqQEmHV8H0iFqUstGoq5DI-SlF6x6SpU6vzd9OAg4x_OX7zVCL53LwMk1WiECMGAPq_j_tMSBIwpoEkhX7t83wFtN2wVYO7Y4iRLD1uSDKYXqkbi9KsIbnQ_084zS65uUzp6-NwoWvtNAwnS34AG_COdx-rs" alt="Tilapia wet fry in gravy" />
+                        <img src="images/eritrean_injera_platter_1784108860298.png" alt="Traditional Eritrean injera platter with stews and sides" />
                     </div>
-                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">House Special</span>
-                    <h3 class="font-headline text-xl mb-2">Whole Tilapia (Wet Fry)</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70">Simmered in a rich tomato and onion gravy,
-                        best enjoyed with a warm dome of ugali.</p>
+                    <span class="badge border border-white/20 text-brand-bg bg-white/5" style="margin-bottom: 0.75rem; display:inline-block;">House Special</span>
+                    <h3 class="font-headline text-xl mb-2 text-brand-gold">Injera Platter</h3>
+                    <p class="font-body text-sm text-brand-bg/70">Spongy Eritrean flatbread served with zigni, shiro, lentils, and vegetable accompaniments — a complete cultural experience.</p>
                 </div>
-                <div class="card">
+                <div class="card glass-dark border border-white/10 p-6 rounded-2xl">
                     <div class="card-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSswVC4l5qrk4dO6TXNRNzp7k1hI-8phbCxB0BN_3MDoDW-rtQW1jNSVdt_VAh8d41b6ip6kRRXgmE8Ua5d093ryYPL4dPMstqzn7eYasMdgFcbfP5OC_GJ_O3Td__5IO3YSDmj1lV-ueWGizZyK2foj2_YuVS4xahi_J85Z3FOx4QzxulieQTmBvsnywPHCOQUIjVCoI7GSSRw5VYs27vQHb3wEx97O4AG5BoJiodyif2O0B6p05E" alt="Traditional ugali" />
+                        <img src="images/traditional_ugali_1784113343752.png" alt="Traditional ugali" />
                     </div>
-                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">Traditional Side</span>
-                    <h3 class="font-headline text-xl mb-2">Ugali & Sukuma Wiki</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70">A perfectly textured dome of ugali paired with
+                    <span class="badge border border-white/20 text-brand-bg bg-white/5" style="margin-bottom: 0.75rem; display:inline-block;">Traditional Side</span>
+                    <h3 class="font-headline text-xl mb-2 text-brand-gold">Ugali & Sukuma Wiki</h3>
+                    <p class="font-body text-sm text-brand-bg/70">A perfectly textured dome of ugali paired with
                         fresh, lightly sautéed collard greens.</p>
                 </div>
             </div>
             <div class="text-center mt-12 reveal">
                 <a href="menu.html" class="btn-secondary" style="display:inline-flex;">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="section-pill border border-brand-gold/30 text-brand-gold bg-brand-gold/10">Gallery</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">Life at Lavington</h2>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">A glimpse into the warmth and energy of our Lavington family.</p>
+            </div>
+            <div class="gallery-grid reveal">
+                <div class="gallery-img">
+                    <img src="images/lavington_branch_interior_1784108805395.png"
+                         alt="Asmara Lavington cozy interior dining room" />
+                </div>
+                <div class="gallery-img">
+                    <img src="images/lavington_kids_play_area_1784108882121.png"
+                         alt="Kids play area at Asmara Lavington with trampoline and bouncing castle" />
+                </div>
+                <div class="gallery-img">
+                    <img src="images/eritrean_injera_platter_1784108860298.png"
+                         alt="Traditional Eritrean injera platter served at Asmara Lavington" />
+                </div>
+                <div class="gallery-img" style="grid-column: span 2;">
+                    <img src="images/restaurant_ambiance_1784113355465.png"
+                         alt="Asmara Lavington restaurant full view with guests dining" />
+                </div>
+                <div class="gallery-img">
+                    <img src="images/whole_fried_tilapia_1784113321295.png"
+                         alt="Whole tilapia dry fry — Asmara signature dish" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="section-pill border border-brand-green/30 text-brand-green bg-brand-green/10">Guest Reviews</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">What Our Lavington Guests Say</h2>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">Rated 4.5 stars across travel and review platforms — here's what keeps them coming back.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 reveal">
+                <div class="review-card">
+                    <div class="stars mb-3">★★★★★</div>
+                    <p class="font-body text-brand-bg/80 text-sm leading-relaxed mb-4 mt-6">
+                        "The kids love it here — they go straight to the bouncing castle while we enjoy injera in peace. The shiro is absolutely incredible. We come almost every Sunday."
+                    </p>
+                    <div class="reviewer-name">— Faith M., Lavington Resident</div>
+                    <div class="text-xs text-brand-bg/40 mt-1">via Wanderlog</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars mb-3">★★★★★</div>
+                    <p class="font-body text-brand-bg/80 text-sm leading-relaxed mb-4 mt-6">
+                        "The service is unobtrusive and professional. The manager checked on us twice during the meal — something you rarely see anymore. Food quality is consistently excellent."
+                    </p>
+                    <div class="reviewer-name">— James O., Corporate Client</div>
+                    <div class="text-xs text-brand-bg/40 mt-1">via Eatout.co.ke</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars mb-3">★★★★½</div>
+                    <p class="font-body text-brand-bg/80 text-sm leading-relaxed mb-4 mt-6">
+                        "Best business lunch spot in Lavington, hands down. The atmosphere is calm enough for meetings but lively enough to feel social. The tilapia is legendary."
+                    </p>
+                    <div class="reviewer-name">— Priscilla N., Marketing Director</div>
+                    <div class="text-xs text-brand-bg/40 mt-1">via evendo.com</div>
+                </div>
             </div>
         </div>
     </section>
@@ -210,7 +530,7 @@
                 ahead is recommended on weekends.</p>
             <div class="flex flex-col md:flex-row justify-center gap-6 pt-2">
                 <a href="index.html#reservation" class="btn-primary">RESERVE A TABLE</a>
-                <a href="https://wa.me/254723925604" target="_blank" class="btn-secondary">MESSAGE ON WHATSAPP</a>
+                <a href="https://wa.me/254700458429" target="_blank" class="btn-secondary">MESSAGE ON WHATSAPP</a>
             </div>
         </div>
     </section>
@@ -248,19 +568,18 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a class="btn-whatsapp-floating" href="https://wa.me/254723925604" target="_blank">
+    <a class="btn-whatsapp-floating" href="https://wa.me/254700458429" target="_blank">
         <span class="material-symbols-outlined">chat</span>
-        <span>Message Mama</span>
+        <span>Message Us</span>
     </a>
 
     <!-- Scripts -->
     <script src="js/main.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Lavington branch — approximate neighborhood coordinates.
-            // NOTE: update to the exact building location once confirmed.
-            const latitude = -1.2833;
-            const longitude = 36.7667;
+            // Lavington branch — Othaya Road coordinates
+            const latitude = -1.2796;
+            const longitude = 36.7734;
 
             const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
             const mapOptions = { scrollWheelZoom: false };
@@ -269,7 +588,7 @@
                 mapOptions.tap = false;
             }
 
-            const map = L.map('map', mapOptions).setView([latitude, longitude], 14);
+            const map = L.map('map', mapOptions).setView([latitude, longitude], 15);
 
             L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -278,7 +597,7 @@
             }).addTo(map);
 
             const marker = L.marker([latitude, longitude]).addTo(map);
-            marker.bindPopup("<div style='font-family: var(--font-headline); font-weight: bold;'>Asmara Hotel — Lavington</div><div style='font-size: 0.8rem; font-family: var(--font-body);'>James Gichuru Road, Nairobi</div>").openPopup();
+            marker.bindPopup("<div style='font-family: var(--font-headline); font-weight: bold;'>Asmara Hotel — Lavington</div><div style='font-size: 0.8rem; font-family: var(--font-body);'>Othaya Road, Lavington, Nairobi</div>").openPopup();
 
             if (isTouchDevice) {
                 const mapEl = document.getElementById('map');

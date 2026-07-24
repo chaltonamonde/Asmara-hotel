@@ -10,7 +10,7 @@ Restructured from a single-page prototype into a fully organized static web appl
 
 ```
 PROJECT 1/
-├── index.html                  # Homepage (Hero, testimonials, famous guests, reservations)
+├── index.html                  # Homepage (Hero, testimonials, reservations)
 ├── menu.html                   # Signature menu page with live search & category filters
 ├── about.html                  # Culinary heritage, lake roots, and sourcing story
 ├── events.html                 # Live Lingala nights schedules and interactive FAQs

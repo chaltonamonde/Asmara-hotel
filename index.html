@@ -42,13 +42,13 @@
     </script>
 
     <!-- Global Custom Stylesheet -->
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style.css?v=2.0" rel="stylesheet" />
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
+<body class="bg-brand-charcoal text-brand-bg font-body selection:bg-brand-terracotta selection:text-white">
     <div class="grain"></div>
 
     <!-- Specials Banner -->
@@ -58,28 +58,28 @@
     </div>
 
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+    <header class="fixed w-full top-0 z-50 bg-brand-charcoal/90 backdrop-blur-md border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
                 ASMARA HOTEL
             </a>
             <div class="hidden md:flex gap-8 items-center">
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="about.html">Our
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
+                    href="menu.html">Menu</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
+                    href="about.html">Our
                     Story</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="#famous">Famous
-                    Guests</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors"
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
                     href="events.html">Events</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors"
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
                     href="gallery.html">Gallery</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors"
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
                     href="contact.html">Location</a>
-                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm hover:scale-95 transition-all"
-                    href="#reservation">Table Reservation</a>
+                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm glow-terracotta transition-all"
+                    href="#reservation">Reserve a Table</a>
             </div>
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-nav-toggle md:hidden p-2 text-brand-charcoal">
+            <button class="mobile-nav-toggle md:hidden p-2 text-brand-bg">
                 <span class="material-symbols-outlined">menu</span>
             </button>
         </nav>
@@ -98,11 +98,8 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[85vh] flex items-center pt-20 overflow-hidden">
-        <div class="hero-animated-bg absolute inset-0"></div>
-        <div class="absolute top-1/4 left-10 text-8xl opacity-10 floating-fish hidden md:block">🐟</div>
-        <div class="absolute bottom-1/4 right-20 text-9xl opacity-10 floating-fish hidden md:block"
-            style="animation-delay: -2s">🐠</div>
+    <section class="relative min-h-[85vh] flex items-center pt-20 overflow-hidden hero-colorful-bg">
+
 
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
             <div class="reveal">
@@ -112,17 +109,19 @@
                         style="font-variation-settings: 'FILL' 1;">star</span>
                     <span class="font-semibold text-xs uppercase tracking-wider">4.1/5 Google Rating</span>
                 </div>
-                <h1 class="font-headline text-5xl md:text-6xl leading-tight mb-6">Nairobi's Most
-                    <span class="text-brand-terracotta italic block md:inline">Legendary</span> Fish
+                <h1 class="font-headline text-5xl md:text-6xl leading-tight mb-6 text-white drop-shadow-lg">Nairobi's
+                    Most
+                    <span class="text-brand-gold italic block md:inline">Legendary</span> Fish
                 </h1>
-                <p class="font-body text-lg text-brand-charcoal/80 mb-10 max-w-lg">
-                    Taste the heritage of Lake Victoria. For decades, Asmara Hotel has served the finest whole Tilapia in
+                <p class="font-body text-lg text-brand-bg/90 mb-10 max-w-lg drop-shadow-md">
+                    Taste the heritage of Lake Victoria. For decades, Asmara Hotel has served the finest whole Tilapia
+                    in
                     Kenya, attracting presidents, tech titans, and food lovers from every corner of the globe.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a class="bg-brand-charcoal text-white px-10 py-4 rounded-lg font-semibold text-center hover:bg-brand-terracotta transition-all shadow-xl"
+                    <a class="bg-brand-terracotta text-white px-10 py-4 rounded-lg font-semibold text-center glow-terracotta transition-all shadow-xl"
                         href="#reservation">Reserve a Table</a>
-                    <a class="bg-brand-green text-white px-10 py-4 rounded-lg font-semibold text-center flex items-center justify-center gap-2 hover:scale-105 transition-all"
+                    <a class="bg-brand-green text-white px-10 py-4 rounded-lg font-semibold text-center flex items-center justify-center gap-2 glow-green transition-all"
                         href="https://wa.me/254723925604" target="_blank">
                         <span class="material-symbols-outlined">chat</span> Order on WhatsApp
                     </a>
@@ -130,190 +129,279 @@
             </div>
             <div class="relative reveal" style="transition-delay: 200ms;">
                 <div
-                    class="aspect-square rounded-full overflow-hidden border-8 border-white shadow-2xl relative max-w-[500px] mx-auto">
+                    class="aspect-square rounded-full overflow-hidden border-4 border-brand-gold shadow-2xl relative max-w-[500px] mx-auto glow-gold">
                     <img alt="Legendary Asmara Hotel Whole Tilapia" class="w-full h-full object-cover"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_VAk5ajUc7W7reoolTN5yVWBrqX5OYoD4V3MIPp0ie9ZQQxlsu98JRmgzS0PNzDAAezC2qwaRllutkNBfvZqnN6haAB_vFqSxDxTIr9zg67211cF65ett9jnsVpcgBPnVkHtbx6Qg38N-ByGhjo-YsXpDpg9g_I3wXtqzB4MtWAGwCo8MYuS_CG5IsVRRCeCouWUYZmnGpca76LzznGD0C-TtZ0TEEtsaDohtaV4dCqjONO-zojOa" />
+                        src="images/karen_branch_garden_1784108820103.png" />
                 </div>
                 <div
-                    class="absolute -bottom-6 -left-6 bg-brand-gold text-brand-charcoal p-6 rounded-xl shadow-2xl transform -rotate-3 max-w-[180px]">
+                    class="absolute -bottom-6 -left-6 bg-brand-charcoal text-brand-gold p-6 rounded-xl shadow-2xl transform -rotate-3 max-w-[180px] border border-brand-gold/30">
                     <p class="font-headline text-xl leading-none mb-1">Authentic</p>
-                    <p class="font-semibold text-xs opacity-80 uppercase tracking-widest">Recipe since 1980s</p>
+                    <p class="font-semibold text-xs opacity-80 uppercase tracking-widest text-brand-bg">Recipe since
+                        1980s</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Famous Guests Section -->
-    <section class="py-24 bg-white overflow-hidden" id="famous">
-        <div class="max-w-7xl mx-auto px-6 mb-16 reveal text-center">
-            <h2 class="font-headline text-4xl mb-4">Loved by Legends</h2>
-            <p class="font-body text-brand-charcoal/70 max-w-2xl mx-auto mt-4">When world leaders and celebrities land
-                in Nairobi, they have one destination in mind for authentic flavor.</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto px-6">
-            <!-- Barack Obama -->
-            <div class="text-center group reveal">
-                <div
-                    class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-brand-gold mb-6 relative transition-transform group-hover:scale-110 shadow-lg">
-                    <img alt="Barack Obama" class="w-full h-full object-cover"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAveHFX2ttCeDPfmpaZwxXbISgrSc_x9QAbpruielYMDPSOibKbH-jXpxskERUbufgh7Ake27iippbLUU_g_G0hroGHqGzL4dlhe9l6qXkk1JHroPRVcvuT5aDZ8kIoMhVeqTQAjU7qMPFJFx2GLeEBFWaZj5-0Wnvu2vqSCbRD5cC--73JSsR-7zR7yP-S8Bp1Ip8o5ewHEpNoyFydyw3qWTJf98TJlqLxvxPVt9NFYMYywkfp26PC" />
-                </div>
-                <h4 class="font-headline text-xl mb-2">Barack Obama</h4>
-                <p class="font-body text-brand-charcoal/80 italic">"Honoring his heritage with a visit to Nairobi's
-                    favorite fish spot."</p>
-            </div>
-            <!-- Mark Zuckerberg -->
-            <div class="text-center group reveal" style="transition-delay: 100ms;">
-                <div
-                    class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-brand-gold mb-6 relative transition-transform group-hover:scale-110 shadow-lg">
-                    <img alt="Mark Zuckerberg" class="w-full h-full object-cover"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr9B565ynhuZdv6MLA387HszaFUkVYooXo5HMGTPK2uoj2p0_hqn5rBCsKtLMjdRp8gJJ78UW3HzllT1Se3IPolX3sA7a1PKp6txTlt_Bgot8bITOXCQ6dEdbHPF5-lZantjMXgGGTlBH1bfa1r7WgYP3qoHW2jKLRkI_l_XUSXNJy-a1IdfzcVVGehm18-QPOfWjZgFl5L4GlfH8T4oMKEPvxOzlh927401YsY26GaNGqezrFtNuu" />
-                </div>
-                <h4 class="font-headline text-xl mb-2">Mark Zuckerberg</h4>
-                <p class="font-body text-brand-charcoal/80 italic">"I had lunch at Asmara Hotel’s. I ate whole fried
-                    tilapia with ugali."</p>
-            </div>
-            <!-- Idris Elba -->
-            <div class="text-center group reveal" style="transition-delay: 200ms;">
-                <div
-                    class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-brand-gold mb-6 relative transition-transform group-hover:scale-110 shadow-lg">
-                    <img alt="Idris Elba" class="w-full h-full object-cover"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxNqzFbwFpldGzSCuuVMcQVzSwO9lz8UEYcJen8A8k6fCkfRaXvh_LQ8WkEqZ95zwo89SXGiKYjKAhRaYfigww_md-INR916OUWOHjOiYel6kme0_i3FBw_jnxLzLuKeErKrqLu4o1GoqvkUfrmW2qHZ676_0r37y8loJGhvUlZ6rYSm08M-k7wLIvvVyywlMDm6ThTGiu5xwJneCj6GyXGN6L6aggiVookmprHQEyFBnS7e2TETbw" />
-                </div>
-                <h4 class="font-headline text-xl mb-2">Idris Elba</h4>
-                <p class="font-body text-brand-charcoal/80 italic">"Exploring the soulful tastes of Nairobi during his
-                    visit."</p>
-            </div>
-        </div>
-    </section>
 
     <!-- Testimonials Carousel -->
-    <section class="py-20 bg-brand-bg overflow-hidden border-y border-brand-charcoal/5">
+    <section class="py-20 bg-brand-charcoal overflow-hidden border-y border-white/5">
         <div class="carousel-outer">
             <div class="carousel-inner">
                 <!-- Testimonial Items -->
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">"Hands down the best fish I've ever had in my
+                <div class="testimonial-card glass-dark glow-terracotta rounded-lg p-6 mx-4">
+                    <div class="stars text-brand-gold mb-2">★★★★★</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #FBF6EE;">"Hands down the best fish I've
+                        ever had in my
                         life. The kachumbari is so fresh!"</p>
                     <p
-                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">
+                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; color: var(--brand-terracotta);">
                         — Sarah J., London</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">"The Zuckerberg special is no joke. Huge portions
+                <div class="testimonial-card glass-dark glow-green rounded-lg p-6 mx-4">
+                    <div class="stars text-brand-gold mb-2">★★★★★</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #FBF6EE;">"The Zuckerberg special is no
+                        joke. Huge portions
                         and authentic vibes."</p>
                     <p
-                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">
+                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; color: var(--brand-green);">
                         — David K., Nairobi</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">"Asmara Hotel is a Nairobi institution. Must visit
+                <div class="testimonial-card glass-dark glow-gold rounded-lg p-6 mx-4">
+                    <div class="stars text-brand-gold mb-2">★★★★★</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #FBF6EE;">"Asmara Hotel is a Nairobi
+                        institution. Must visit
                         every time I'm in town."</p>
                     <p
-                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">
+                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; color: var(--brand-gold);">
                         — Amara W., Lagos</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">"The wet fry sauce is legendary. I could eat it
+                <div class="testimonial-card glass-dark glow-terracotta rounded-lg p-6 mx-4">
+                    <div class="stars text-brand-gold mb-2">★★★★★</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #FBF6EE;">"The wet fry sauce is legendary.
+                        I could eat it
                         with just the ugali alone."</p>
                     <p
-                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">
+                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; color: var(--brand-terracotta);">
                         — Mike R., New York</p>
                 </div>
                 <!-- Repeating for continuous scroll effect -->
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">"Hands down the best fish I've ever had in my
+                <div class="testimonial-card glass-dark glow-terracotta rounded-lg p-6 mx-4">
+                    <div class="stars text-brand-gold mb-2">★★★★★</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #FBF6EE;">"Hands down the best fish I've
+                        ever had in my
                         life. The kachumbari is so fresh!"</p>
                     <p
-                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">
+                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; color: var(--brand-terracotta);">
                         — Sarah J., London</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">"The Zuckerberg special is no joke. Huge portions
+                <div class="testimonial-card glass-dark glow-green rounded-lg p-6 mx-4">
+                    <div class="stars text-brand-gold mb-2">★★★★★</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #FBF6EE;">"The Zuckerberg special is no
+                        joke. Huge portions
                         and authentic vibes."</p>
                     <p
-                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">
+                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; color: var(--brand-green);">
                         — David K., Nairobi</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">"Asmara Hotel is a Nairobi institution. Must visit
+                <div class="testimonial-card glass-dark glow-gold rounded-lg p-6 mx-4">
+                    <div class="stars text-brand-gold mb-2">★★★★★</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #FBF6EE;">"Asmara Hotel is a Nairobi
+                        institution. Must visit
                         every time I'm in town."</p>
                     <p
-                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">
+                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; color: var(--brand-gold);">
                         — Amara W., Lagos</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">"The wet fry sauce is legendary. I could eat it
+                <div class="testimonial-card glass-dark glow-terracotta rounded-lg p-6 mx-4">
+                    <div class="stars text-brand-gold mb-2">★★★★★</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #FBF6EE;">"The wet fry sauce is legendary.
+                        I could eat it
                         with just the ugali alone."</p>
                     <p
-                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">
+                        style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; color: var(--brand-terracotta);">
                         — Mike R., New York</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Table Reservations Form -->
-    <section class="py-24 bg-brand-bg" id="reservation">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="bg-white p-10 md:p-16 rounded-2xl border border-brand-terracotta/10 shadow-2xl relative">
-                <div
-                    class="absolute -top-6 left-1/2 -translate-x-1/2 bg-brand-terracotta text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md">
-                    Book Your Experience
-                </div>
-                <h2 class="font-headline text-3xl text-center mb-10 mt-4">Table Reservation</h2>
+    <!-- ═══════════════════════════════════════════════════
+         TABLE RESERVATION SECTION
+    ═══════════════════════════════════════════════════ -->
+    <section class="res-section" id="reservation" aria-label="Table Reservation">
 
-                <form id="resForm">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input name="name" required type="text" placeholder="John Doe" />
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input name="phone" required type="tel" placeholder="+254 700 000000" />
+        <!-- Background image + dark overlay -->
+        <div class="res-bg" aria-hidden="true"></div>
+
+        <div class="res-container">
+
+            <!-- Section eyebrow -->
+            <div class="res-eyebrow reveal">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;"
+                    aria-hidden="true">restaurant</span>
+                <span>Reserve Your Table</span>
+            </div>
+
+            <!-- Section headline -->
+            <h2 class="res-headline reveal" style="transition-delay:100ms">
+                Book an <em>Unforgettable</em> Experience
+            </h2>
+            <p class="res-subline reveal" style="transition-delay:180ms">
+                Secure your seat for Nairobi's most legendary fish. Fill in your details and we'll reach out to confirm
+                instantly via WhatsApp.
+            </p>
+
+            <!-- ─── FORM CARD ──────────────────────────────────────── -->
+            <div class="res-card glass-dark reveal" style="transition-delay:260ms">
+
+                <!-- Gold pill badge -->
+                <div class="res-card-badge" aria-hidden="true">
+                    <span class="material-symbols-outlined"
+                        style="font-variation-settings:'FILL' 1;font-size:1rem;">star</span>
+                    Guaranteed Fresh · Lake Victoria Tilapia
+                </div>
+
+                <form id="resForm" class="res-form dark-form" novalidate autocomplete="off">
+
+                    <!-- ── Row 1: Full Name ──────────────────────── -->
+                    <div class="res-form-group">
+                        <label class="res-label" for="res-name">
+                            <span class="material-symbols-outlined res-label-icon" aria-hidden="true">person</span>
+                            Full Name
+                        </label>
+                        <div class="res-input-wrap">
+                            <input id="res-name" name="name" type="text" placeholder="e.g. Amina Ochieng"
+                                autocomplete="name" required />
                         </div>
-                        <div class="form-group">
-                            <label>Guests (No.)</label>
-                            <input min="1" name="size" required type="number" value="2" />
+                        <span class="res-field-error" role="alert" aria-live="polite"></span>
+                    </div>
+
+                    <!-- ── Row 2: Phone + Guests ─────────────────── -->
+                    <div class="res-form-row">
+                        <div class="res-form-group">
+                            <label class="res-label" for="res-phone">
+                                <span class="material-symbols-outlined res-label-icon" aria-hidden="true">call</span>
+                                Phone Number
+                            </label>
+                            <div class="res-input-wrap">
+                                <input id="res-phone" name="phone" type="tel" placeholder="+254 700 000 000"
+                                    autocomplete="tel" required />
+                            </div>
+                            <span class="res-field-error" role="alert" aria-live="polite"></span>
+                        </div>
+
+                        <div class="res-form-group">
+                            <label class="res-label" for="res-size">
+                                <span class="material-symbols-outlined res-label-icon" aria-hidden="true">group</span>
+                                Number of Guests
+                            </label>
+                            <div class="res-input-wrap res-input-wrap--number">
+                                <button type="button" class="res-num-btn" id="res-decrement"
+                                    aria-label="Decrease guests">−</button>
+                                <input id="res-size" name="size" type="number" min="1" max="500" value="2" required
+                                    aria-label="Number of guests" />
+                                <button type="button" class="res-num-btn" id="res-increment"
+                                    aria-label="Increase guests">+</button>
+                            </div>
+                            <span class="res-field-error" role="alert" aria-live="polite"></span>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Date</label>
-                            <input name="date" required type="date" />
+
+                    <!-- ── Row 3: Date + Time ─────────────────────── -->
+                    <div class="res-form-row">
+                        <div class="res-form-group">
+                            <label class="res-label" for="res-date">
+                                <span class="material-symbols-outlined res-label-icon"
+                                    aria-hidden="true">calendar_today</span>
+                                Preferred Date
+                            </label>
+                            <div class="res-input-wrap">
+                                <input id="res-date" name="date" type="date" required />
+                            </div>
+                            <span class="res-field-error" role="alert" aria-live="polite"></span>
                         </div>
-                        <div class="form-group">
-                            <label>Time</label>
-                            <input name="time" required type="time" />
+
+                        <div class="res-form-group">
+                            <label class="res-label" for="res-time">
+                                <span class="material-symbols-outlined res-label-icon"
+                                    aria-hidden="true">schedule</span>
+                                Arrival Time
+                            </label>
+                            <div class="res-input-wrap">
+                                <input id="res-time" name="time" type="time" required />
+                            </div>
+                            <span class="res-field-error" role="alert" aria-live="polite"></span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Special Requests</label>
-                        <textarea name="requests" placeholder="e.g. Birthday celebration, window seat, allergy info..."
-                            rows="3"></textarea>
+
+                    <!-- ── Row 4: Special Requests ───────────────── -->
+                    <div class="res-form-group">
+                        <label class="res-label" for="res-requests">
+                            <span class="material-symbols-outlined res-label-icon" aria-hidden="true">chat_bubble</span>
+                            Special Requests
+                            <span class="res-label-optional">(optional)</span>
+                        </label>
+                        <div class="res-input-wrap">
+                            <textarea id="res-requests" name="requests" rows="3"
+                                placeholder="Birthday surprise, window seat, dietary needs, wheelchair access…"></textarea>
+                        </div>
                     </div>
-                    <button
-                        class="bg-brand-charcoal text-white py-5 rounded-lg font-headline text-xl hover:bg-brand-terracotta transition-all mt-4 cursor-pointer"
-                        type="submit">
+
+                    <!-- ── Checkbox: Terms ───────────────────────── -->
+                    <div class="res-checkbox-group">
+                        <label class="res-checkbox-label" for="res-terms">
+                            <input id="res-terms" name="terms" type="checkbox" class="res-checkbox-input" required />
+                            <span class="res-checkbox-box" aria-hidden="true"></span>
+                            <span class="res-checkbox-text">
+                                I agree to the <a href="#" class="res-link">Terms &amp; Conditions</a> and understand
+                                the cancellation policy.
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- ── Submit Button ─────────────────────────── -->
+                    <button id="res-submit" type="submit" class="res-submit-btn" aria-live="polite">
+                        <span class="material-symbols-outlined" aria-hidden="true">send</span>
                         Confirm Reservation
                     </button>
-                    <p class="text-center font-body text-xs text-brand-charcoal/60">
-                        Clicking confirm will format your request into a WhatsApp message directly to our staff and log
-                        it in our local system.
+
+                    <!-- ── Fine Print ────────────────────────────── -->
+                    <p class="res-fine-print">
+                        <span class="material-symbols-outlined" style="font-size:0.95rem;vertical-align:middle;"
+                            aria-hidden="true">lock</span>
+                        Your details open a WhatsApp message to our team and are saved securely. We typically confirm
+                        within 15 minutes.
                     </p>
+
                 </form>
             </div>
+            <!-- /res-card -->
+
+            <!-- Trust Strip -->
+            <div class="res-trust-strip reveal" style="transition-delay:360ms" aria-label="Trust indicators">
+                <div class="res-trust-item">
+                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;"
+                        aria-hidden="true">verified</span>
+                    Instant WhatsApp Confirmation
+                </div>
+                <div class="res-trust-divider" aria-hidden="true"></div>
+                <div class="res-trust-item">
+                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;"
+                        aria-hidden="true">star</span>
+                    4.1 / 5 Google Rating
+                </div>
+                <div class="res-trust-divider" aria-hidden="true"></div>
+                <div class="res-trust-item">
+                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;"
+                        aria-hidden="true">people</span>
+                    Loved Since the 1980s
+                </div>
+            </div>
+
         </div>
     </section>
+    <!-- /reservation -->
 
     <!-- Footer -->
     <footer class="bg-brand-charcoal text-white pt-24 pb-12">

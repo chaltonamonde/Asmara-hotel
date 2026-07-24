@@ -4,12 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Asmara Hotel Karen | Restaurant & Location</title>
+    <title>Asmara Hotel Karen | Garden Dining, Eritrean Cuisine & Location — Ngong Road</title>
     <meta
-        content="Visit Asmara Hotel's Karen branch for the same legendary Lake Victoria tilapia and traditional Kenyan dishes, served in Nairobi's leafy Karen suburb. Get directions, hours and menu highlights."
+        content="Visit Asmara Hotel Karen on Ngong Road for authentic Eritrean and continental dining in Nairobi's leafy suburb. Expansive garden, kids' outdoor play area, free Wi-Fi. Open daily 10 AM – 10:30 PM."
         name="description" />
-    <meta property="og:title" content="Asmara Hotel Karen | Restaurant & Location" />
-    <meta property="og:description" content="Visit Asmara Hotel's Karen branch for the same legendary Lake Victoria tilapia and traditional Kenyan dishes, served in Nairobi's leafy Karen suburb." />
+    <meta property="og:title" content="Asmara Hotel Karen | Garden Dining on Ngong Road" />
+    <meta property="og:description"
+        content="Serene garden dining in Karen with authentic Eritrean and continental cuisine. Family-friendly with outdoor play area. Rated 4.5 stars." />
     <meta property="og:image" content="https://asmarahotel.com/images/og-image.jpg" />
     <meta property="og:url" content="https://asmarahotel.com/karen.html" />
     <meta property="og:type" content="restaurant" />
@@ -50,27 +51,215 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="icon" type="image/png" href="favicon.png" />
+
+    <style>
+        /* Branch-page extra styles */
+        .story-section {
+            background: linear-gradient(135deg, rgba(58, 90, 64, 0.12) 0%, rgba(232, 184, 75, 0.06) 100%);
+            border: 1px solid rgba(58, 90, 64, 0.25);
+            border-radius: 1.5rem;
+            padding: 3rem;
+        }
+
+        .story-quote {
+            font-family: var(--font-headline);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--brand-gold);
+            border-left: 4px solid var(--brand-green);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            line-height: 1.7;
+        }
+
+        .amenity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .amenity-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .amenity-card:hover {
+            background: rgba(58, 90, 64, 0.15);
+            border-color: rgba(58, 90, 64, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .amenity-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            font-family: var(--font-headline);
+            font-size: 5rem;
+            color: var(--brand-green);
+            opacity: 0.3;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            line-height: 1;
+        }
+
+        .stars {
+            color: var(--brand-gold);
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .reviewer-name {
+            font-weight: 700;
+            color: var(--brand-gold);
+            font-size: 0.9rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .story-section {
+                padding: 1.5rem;
+            }
+
+            .amenity-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .gallery-img {
+            border-radius: 1rem;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-img:hover img {
+            transform: scale(1.08);
+        }
+
+        .branch-stat {
+            text-align: center;
+            padding: 1.5rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .branch-stat:last-child {
+            border-right: none;
+        }
+
+        .branch-stat .stat-num {
+            font-family: var(--font-headline);
+            font-size: 2.5rem;
+            color: var(--brand-gold);
+            font-weight: 700;
+        }
+
+        .branch-stat .stat-label {
+            font-size: 0.85rem;
+            color: rgba(251, 246, 238, 0.6);
+            margin-top: 0.25rem;
+        }
+
+        .section-pill {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .special-dish-card {
+            background: rgba(58, 90, 64, 0.12);
+            border: 1px solid rgba(58, 90, 64, 0.3);
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .special-dish-card:hover {
+            background: rgba(58, 90, 64, 0.2);
+            transform: translateX(4px);
+        }
+
+        .dish-price {
+            font-family: var(--font-headline);
+            color: var(--brand-gold);
+            font-size: 1.1rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
+<body class="bg-brand-charcoal text-brand-bg font-body selection:bg-brand-terracotta selection:text-white">
     <div class="grain"></div>
 
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+    <header class="fixed w-full top-0 z-50 bg-brand-charcoal/90 backdrop-blur-md border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
                 ASMARA HOTEL
             </a>
             <div class="hidden md:flex gap-8 items-center">
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
-                <a class="font-semibold text-sm text-brand-terracotta transition-colors" href="contact.html">Locations</a>
-                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm hover:scale-95 transition-all" href="index.html#reservation">Reserve Now</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
+                    href="index.html">Home</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
+                    href="menu.html">Menu</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
+                    href="about.html">Our Story</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors"
+                    href="gallery.html">Gallery</a>
+                <a class="font-semibold text-sm text-brand-terracotta transition-colors"
+                    href="contact.html">Locations</a>
+                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm glow-terracotta transition-all"
+                    href="index.html#reservation">Reserve Now</a>
             </div>
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-nav-toggle md:hidden p-2 text-brand-charcoal">
+            <button class="mobile-nav-toggle md:hidden p-2 text-brand-bg">
                 <span class="material-symbols-outlined">menu</span>
             </button>
         </nav>
@@ -88,16 +277,18 @@
     </div>
 
     <!-- Hero -->
-    <section class="pt-32 pb-16">
-        <div class="max-w-7xl mx-auto px-6">
+    <section class="pt-32 pb-16 hero-colorful-bg relative">
+        <div class="absolute inset-0 bg-brand-charcoal/80"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-10 reveal">
-                <span class="badge mb-4" style="display:inline-block;">Karen Branch</span>
-                <h1 class="font-headline text-5xl mb-4">Asmara Hotel, Karen</h1>
-                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
-                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
-                    The same legendary Lake Victoria tilapia and Mama Oliech recipes our Kilimani guests love, now
-                    served among the leafy gardens and quiet streets of Karen. Come for a long, unhurried lunch or a
-                    family dinner under the trees.
+                <span class="badge mb-4 border border-brand-green/30 text-brand-bg bg-brand-green/20"
+                    style="display:inline-block;">Karen Branch — Garden Dining Sanctuary</span>
+                <h1 class="font-headline text-5xl mb-4 text-brand-gold">Asmara Hotel, Karen</h1>
+                <div class="w-24 h-1 bg-brand-green mx-auto mb-6"></div>
+                <p class="font-body text-brand-bg/80 max-w-2xl mx-auto">
+                    Nairobi's most picturesque dining destination. Set along 321 Ngong Road in the leafy Karen suburb,
+                    our Karen branch is renowned for its expansive garden, lush lawns, and the kind of serene atmosphere
+                    that makes every meal feel like a retreat.
                 </p>
             </div>
 
@@ -116,22 +307,248 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="rounded-2xl overflow-hidden organic-border reveal" style="aspect-ratio: 21/9;">
                 <img class="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxNqzFbwFpldGzSCuuVMcQVzSwO9lz8UEYcJen8A8k6fCkfRaXvh_LQ8WkEqZ95zwo89SXGiKYjKAhRaYfigww_md-INR916OUWOHjOiYel6kme0_i3FBw_jnxLzLuKeErKrqLu4o1GoqvkUfrmW2qHZ676_0r37y8loJGhvUlZ6rYSm08M-k7wLIvvVyywlMDm6ThTGiu5xwJneCj6GyXGN6L6aggiVookmprHQEyFBnS7e2TETbw"
-                    alt="Warm restaurant interior with wooden tables set for guests" />
+                    src="images/karen_branch_garden_1784108820103.png"
+                    alt="Asmara Hotel Karen lush garden outdoor dining with families in leafy Karen suburb" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Branch Quick Stats -->
+    <section class="pb-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="glass-dark border border-white/10 rounded-2xl overflow-hidden reveal">
+                <div class="grid grid-cols-2 md:grid-cols-4">
+                    <div class="branch-stat">
+                        <div class="stat-num">4.6★</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                    <div class="branch-stat">
+                        <div class="stat-num">321</div>
+                        <div class="stat-label">Ngong Road Address</div>
+                    </div>
+                    <div class="branch-stat">
+                        <div class="stat-num">10AM</div>
+                        <div class="stat-label">Opens Daily</div>
+                    </div>
+                    <div class="branch-stat">
+                        <div class="stat-num">2+</div>
+                        <div class="stat-label">Acres of Garden</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="pb-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <span class="section-pill border border-brand-green/30 text-brand-green bg-brand-green/10">The Karen
+                        Story</span>
+                    <h2 class="font-headline text-4xl mb-6 text-brand-gold">A Little Piece of Eritrea in Karen's
+                        Greenery</h2>
+                    <div class="story-section">
+                        <p class="font-body text-brand-bg/80 leading-relaxed mb-4">
+                            Karen has always been Nairobi's most serene corner — a suburb of wide roads, lush gardens,
+                            and a pace of life that feels a world away from the city's centre. When Asmara chose Karen
+                            for one of its flagship branches, it was a perfect match: a restaurant built on warmth and
+                            cultural heritage, finding a home in a neighbourhood that prized exactly those qualities.
+                        </p>
+                        <blockquote class="story-quote">
+                            "In Karen, we didn't just open a restaurant. We planted a garden where cultures meet,
+                            children play, and families remember what a Sunday afternoon is supposed to feel like."
+                        </blockquote>
+                        <p class="font-body text-brand-bg/80 leading-relaxed mb-4">
+                            Located at 321 Ngong Road, the Karen branch is widely regarded as the most picturesque of
+                            all Asmara locations. Its expansive lawn, mature trees, and dedicated outdoor play area —
+                            complete with swings, slides, and tunnels — have made it the unrivalled choice for Karen
+                            families and weekend outings.
+                        </p>
+                        <p class="font-body text-brand-bg/80 leading-relaxed">
+                            The branch also earned accolades at the Chef's Delight Awards for Best Eritrean/Ethiopian
+                            Cuisine — a testament to the uncompromising kitchen standards maintained across every Asmara
+                            location. Whether it's a lazy Sunday brunch, a romantic dinner under the trees, or a
+                            children's birthday celebration on the lawn, Karen delivers an experience that feels
+                            genuinely special.
+                        </p>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <div class="space-y-4">
+                        <div class="rounded-2xl overflow-hidden" style="aspect-ratio: 16/9;">
+                            <img src="images/karen_interior_dining_1784108894567.png"
+                                alt="Asmara Karen elegant afro-contemporary interior with clay pot decor and warm lighting"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <!-- Award badge -->
+                        <div class="glass-dark border border-brand-gold/20 rounded-xl p-4 flex items-center gap-4">
+                            <span class="material-symbols-outlined text-3xl"
+                                style="color: var(--brand-gold);">emoji_events</span>
+                            <div>
+                                <div class="font-headline text-brand-gold font-bold">Chef's Delight Award Winner</div>
+                                <div class="text-brand-bg/60 text-sm">Best Eritrean/Ethiopian Cuisine — Nairobi</div>
+                            </div>
+                        </div>
+                        <div class="glass-dark border border-brand-gold/20 rounded-xl p-4 flex items-center gap-4">
+                            <span class="material-symbols-outlined text-3xl"
+                                style="color: var(--brand-gold);">star</span>
+                            <div>
+                                <div class="font-headline text-brand-gold font-bold">UP Magazine Reader's Choice</div>
+                                <div class="text-brand-bg/60 text-sm">Best African Cuisine — Nairobi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Karen Signature Menu -->
+    <section class="py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="section-pill border border-brand-gold/30 text-brand-gold bg-brand-gold/10">Karen Signature
+                    Dishes</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">Authentic Eritrean Specialties</h2>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">
+                    Beyond our famous tilapia, the Karen branch is celebrated for its full Eritrean repertoire — dishes
+                    that have earned us national acclaim.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-16 items-start reveal">
+                <div class="space-y-4">
+                    <div class="special-dish-card">
+                        <div>
+                            <div class="font-headline text-lg text-brand-bg">Shiro Tegamino</div>
+                            <div class="text-brand-bg/50 text-sm">Spiced chickpea & split pea sauce, served in clay pot
+                            </div>
+                        </div>
+                        <div class="dish-price">KES 850</div>
+                    </div>
+                    <div class="special-dish-card">
+                        <div>
+                            <div class="font-headline text-lg text-brand-bg">Zilzil Tibsi</div>
+                            <div class="text-brand-bg/50 text-sm">Pan-fried beef strips in traditional clay pot,
+                                Eritrean spices</div>
+                        </div>
+                        <div class="dish-price">KES 1,450</div>
+                    </div>
+                    <div class="special-dish-card">
+                        <div>
+                            <div class="font-headline text-lg text-brand-bg">Asmara Kitfo</div>
+                            <div class="text-brand-bg/50 text-sm">Seasoned minced beef with niter kibbeh and mitmita
+                            </div>
+                        </div>
+                        <div class="dish-price">KES 1,350</div>
+                    </div>
+                    <div class="special-dish-card">
+                        <div>
+                            <div class="font-headline text-lg text-brand-bg">Injera Platter (Vegetarian)</div>
+                            <div class="text-brand-bg/50 text-sm">Full spread of lentils, greens, shiro & salads on
+                                injera</div>
+                        </div>
+                        <div class="dish-price">KES 950</div>
+                    </div>
+                    <div class="special-dish-card">
+                        <div>
+                            <div class="font-headline text-lg text-brand-bg">Zigni (Eritrean Beef Stew)</div>
+                            <div class="text-brand-bg/50 text-sm">Slow-cooked in berbere sauce, served with injera</div>
+                        </div>
+                        <div class="dish-price">KES 1,250</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="rounded-2xl overflow-hidden" style="aspect-ratio: 4/3;">
+                        <img src="images/eritrean_injera_platter_1784108860298.png"
+                            alt="Authentic Eritrean injera platter with stews at Asmara Karen"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <div class="text-center mt-6">
+                        <a href="menu.html" class="btn-secondary" style="display:inline-flex;">View Full Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities & Services -->
+    <section class="py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="section-pill border border-brand-green/30 text-brand-green bg-brand-green/10">Amenities &
+                    Services</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">The Karen Experience</h2>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
+            </div>
+            <div class="amenity-grid reveal">
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-green);">park</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Expansive Garden</h4>
+                    <p class="text-brand-bg/60 text-sm">Lush lawns and mature trees — dine surrounded by nature</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined"
+                        style="color: var(--brand-green);">outdoor_grill</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Outdoor Play Area</h4>
+                    <p class="text-brand-bg/60 text-sm">Swings, slides & tunnels — kids play while parents relax</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-green);">wifi</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Free Wi-Fi</h4>
+                    <p class="text-brand-bg/60 text-sm">Complimentary high-speed internet throughout the venue</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined"
+                        style="color: var(--brand-green);">local_parking</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Secure Parking</h4>
+                    <p class="text-brand-bg/60 text-sm">Ample secured parking for all guests</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined"
+                        style="color: var(--brand-green);">accessible</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Stroller Friendly</h4>
+                    <p class="text-brand-bg/60 text-sm">Easy ground-level access for prams and mobility aids</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-green);">eco</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Vegetarian & Vegan</h4>
+                    <p class="text-brand-bg/60 text-sm">Extensive plant-based Eritrean menu options available</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined" style="color: var(--brand-green);">event</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Private Events</h4>
+                    <p class="text-brand-bg/60 text-sm">Garden hire for weddings, birthdays & corporate events</p>
+                </div>
+                <div class="amenity-card">
+                    <span class="amenity-icon material-symbols-outlined"
+                        style="color: var(--brand-green);">music_note</span>
+                    <h4 class="font-headline text-lg text-brand-gold mb-1">Soft Background Music</h4>
+                    <p class="text-brand-bg/60 text-sm">Curated Afro-contemporary soundtrack for the perfect ambiance
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Location Info Section -->
-    <section class="pb-24">
-        <div class="max-w-7xl mx-auto px-6">
+    <section class="pb-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 pt-24">
+            <div class="text-center mb-16 reveal">
+                <span
+                    class="section-pill border border-brand-terracotta/30 text-brand-terracotta bg-brand-terracotta/10">Find
+                    Us</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">Location & Contact Details</h2>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto"></div>
+            </div>
             <div class="contact-grid" style="grid-template-columns: 1fr; max-width: 900px; margin: 0 auto;">
                 <div class="contact-info-block reveal">
                     <div class="info-item">
                         <div class="info-icon"><span class="material-symbols-outlined">location_on</span></div>
                         <div class="info-text">
                             <h3>Our Location</h3>
-                            <p>Karen Road, Karen</p>
+                            <p>321 Ngong Road, Karen</p>
                             <p>Nairobi, Kenya</p>
                         </div>
                     </div>
@@ -140,7 +557,7 @@
                         <div class="info-text">
                             <h3>Operating Hours</h3>
                             <p style="font-weight: 600; color: var(--brand-green);">Open Daily (Monday - Sunday)</p>
-                            <p>9:00 AM - 10:00 PM</p>
+                            <p>10:00 AM – 10:30 PM</p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -148,7 +565,15 @@
                         <div class="info-text">
                             <h3>Get In Touch</h3>
                             <p>Phone: <a href="tel:+254723925604">+254 723 925 604</a></p>
-                            <p>Email: <a href="mailto:info@asmarahotel.com">info@asmarahotel.com</a></p>
+                            <p>Email: <a href="mailto:sales@asmara.co.ke">sales@asmara.co.ke</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><span class="material-symbols-outlined">directions_car</span></div>
+                        <div class="info-text">
+                            <h3>Getting Here</h3>
+                            <p>Along Ngong Road towards Karen shopping centre. We are at house 321 on the right-hand
+                                side, with a large, clearly visible signboard and gated entry.</p>
                         </div>
                     </div>
                     <div class="map-container" id="map"></div>
@@ -158,46 +583,128 @@
     </section>
 
     <!-- Popular Here -->
-    <section class="bg-surface-container py-section-gap-mobile" style="background-color: var(--surface-container);">
+    <section class="py-section-gap-mobile border-t border-white/10 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <h2 class="font-headline text-4xl mb-4">Popular at Our Karen Table</h2>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">Popular at Our Karen Table</h2>
                 <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
-                <p class="font-body text-brand-charcoal/70 max-w-xl mx-auto">
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">
                     Every branch shares the same kitchen standards. These are the dishes Karen regulars order most.
                 </p>
             </div>
             <div class="grid-3 reveal">
-                <div class="card">
+                <div class="card glass-dark border border-white/10 p-6 rounded-2xl">
                     <div class="card-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXtTWMi6q7mgXF28CjVVVB9xh_n2xTuMhevNiPI-qzYlW5MW8UNBJA5uY3PddKMcCq-ziaDp6shRR-cEnwiPmvmlqnzSldn0X2zwRqHBld8VTSByJOhhVwsyyJqUp8wwr3ZrXMISKqaBgR6USA6br_gFlAi5a3Qpxa_vCBsQY1QVsyrMSoOm7RtYg7S5g_haMEnbqLxZFCs3e4qlp_EKpon8oANtPMtmmmm9gCN74bEkVwSAPnl0XW" alt="Whole fried tilapia" />
+                        <img src="images/whole_fried_tilapia_1784113321295.png"
+                            alt="Whole fried tilapia" />
                     </div>
-                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">Bestseller</span>
-                    <h3 class="font-headline text-xl mb-2">Whole Tilapia (Dry Fry)</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70">Fresh from Lake Victoria, seasoned with our
+                    <span class="badge border border-white/20 text-brand-bg bg-white/5"
+                        style="margin-bottom: 0.75rem; display:inline-block;">Bestseller</span>
+                    <h3 class="font-headline text-xl mb-2 text-brand-gold">Whole Tilapia (Dry Fry)</h3>
+                    <p class="font-body text-sm text-brand-bg/70">Fresh from Lake Victoria, seasoned with our
                         secret salt rub and deep-fried to golden perfection.</p>
                 </div>
-                <div class="card">
+                <div class="card glass-dark border border-white/10 p-6 rounded-2xl">
                     <div class="card-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKu2uOyOXITPsJ-kAp8tXar2JNtJMbhJJDXRSub7PYKHqsyCrv5RDiq5SXE-A5HAl_ewskWkpJ75ppwrEKHutogGUjSqQEmHV8H0iFqUstGoq5DI-SlF6x6SpU6vzd9OAg4x_OX7zVCL53LwMk1WiECMGAPq_j_tMSBIwpoEkhX7t83wFtN2wVYO7Y4iRLD1uSDKYXqkbi9KsIbnQ_084zS65uUzp6-NwoWvtNAwnS34AG_COdx-rs" alt="Tilapia wet fry in gravy" />
+                        <img src="images/tilapia_wet_fry_1784113332545.png"
+                            alt="Tilapia wet fry in gravy" />
                     </div>
-                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">House Special</span>
-                    <h3 class="font-headline text-xl mb-2">Whole Tilapia (Wet Fry)</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70">Simmered in a rich tomato and onion gravy,
+                    <span class="badge border border-white/20 text-brand-bg bg-white/5"
+                        style="margin-bottom: 0.75rem; display:inline-block;">House Special</span>
+                    <h3 class="font-headline text-xl mb-2 text-brand-gold">Whole Tilapia (Wet Fry)</h3>
+                    <p class="font-body text-sm text-brand-bg/70">Simmered in a rich tomato and onion gravy,
                         best enjoyed with a warm dome of ugali.</p>
                 </div>
-                <div class="card">
+                <div class="card glass-dark border border-white/10 p-6 rounded-2xl">
                     <div class="card-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSswVC4l5qrk4dO6TXNRNzp7k1hI-8phbCxB0BN_3MDoDW-rtQW1jNSVdt_VAh8d41b6ip6kRRXgmE8Ua5d093ryYPL4dPMstqzn7eYasMdgFcbfP5OC_GJ_O3Td__5IO3YSDmj1lV-ueWGizZyK2foj2_YuVS4xahi_J85Z3FOx4QzxulieQTmBvsnywPHCOQUIjVCoI7GSSRw5VYs27vQHb3wEx97O4AG5BoJiodyif2O0B6p05E" alt="Traditional ugali" />
+                        <img src="images/traditional_ugali_1784113343752.png"
+                            alt="Traditional ugali" />
                     </div>
-                    <span class="badge" style="margin-bottom: 0.75rem; display:inline-block;">Traditional Side</span>
-                    <h3 class="font-headline text-xl mb-2">Ugali & Sukuma Wiki</h3>
-                    <p class="font-body text-sm text-brand-charcoal/70">A perfectly textured dome of ugali paired with
+                    <span class="badge border border-white/20 text-brand-bg bg-white/5"
+                        style="margin-bottom: 0.75rem; display:inline-block;">Traditional Side</span>
+                    <h3 class="font-headline text-xl mb-2 text-brand-gold">Ugali & Sukuma Wiki</h3>
+                    <p class="font-body text-sm text-brand-bg/70">A perfectly textured dome of ugali paired with
                         fresh, lightly sautéed collard greens.</p>
                 </div>
             </div>
             <div class="text-center mt-12 reveal">
                 <a href="menu.html" class="btn-secondary" style="display:inline-flex;">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="section-pill border border-brand-gold/30 text-brand-gold bg-brand-gold/10">Gallery</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">Life in the Karen Garden</h2>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
+            </div>
+            <div class="gallery-grid reveal">
+                <div class="gallery-img" style="grid-column: span 2;">
+                    <img src="images/karen_branch_garden_1784108820103.png"
+                        alt="Asmara Karen lush garden dining area with families" />
+                </div>
+                <div class="gallery-img">
+                    <img src="images/karen_interior_dining_1784108894567.png"
+                        alt="Asmara Karen elegant interior with Eritrean cultural decor" />
+                </div>
+                <div class="gallery-img">
+                    <img src="images/eritrean_injera_platter_1784108860298.png"
+                        alt="Traditional Eritrean injera platter — Karen signature" />
+                </div>
+                <div class="gallery-img">
+                    <img src="images/restaurant_ambiance_1784113355465.png"
+                        alt="Warm restaurant dining scene at Asmara Karen" />
+                </div>
+                <div class="gallery-img">
+                    <img src="images/whole_fried_tilapia_1784113321295.png"
+                        alt="Crispy tilapia dry fry at Asmara Karen" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="section-pill border border-brand-green/30 text-brand-green bg-brand-green/10">Guest
+                    Reviews</span>
+                <h2 class="font-headline text-4xl mb-4 text-brand-gold">What Our Karen Guests Say</h2>
+                <div class="w-24 h-1 bg-brand-terracotta mx-auto mb-6"></div>
+                <p class="font-body text-brand-bg/80 max-w-xl mx-auto">Rated 4.6 stars — consistently one of Nairobi's
+                    most recommended garden restaurants.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 reveal">
+                <div class="review-card">
+                    <div class="stars mb-3">★★★★★</div>
+                    <p class="font-body text-brand-bg/80 text-sm leading-relaxed mb-4 mt-6">
+                        "The garden is absolutely stunning. Children spent the whole afternoon on the play equipment
+                        while we enjoyed the most incredible shiro and injera. It felt like a mini vacation."
+                    </p>
+                    <div class="reviewer-name">— Wangari K., Karen Resident</div>
+                    <div class="text-xs text-brand-bg/40 mt-1">via kids365.org</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars mb-3">★★★★★</div>
+                    <p class="font-body text-brand-bg/80 text-sm leading-relaxed mb-4 mt-6">
+                        "We held our team's off-site lunch here and every single person was impressed. The food was
+                        exceptional, the space is beautiful, and the staff went above and beyond."
+                    </p>
+                    <div class="reviewer-name">— Daniel M., Corporate Client</div>
+                    <div class="text-xs text-brand-bg/40 mt-1">via dinesurf.com</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars mb-3">★★★★½</div>
+                    <p class="font-body text-brand-bg/80 text-sm leading-relaxed mb-4 mt-6">
+                        "The Zilzil Tibsi in the clay pot is something you will dream about long after you leave. The
+                        garden atmosphere is so peaceful — perfect for a Sunday treat. Highly recommend."
+                    </p>
+                    <div class="reviewer-name">— Amina H., Food Blogger</div>
+                    <div class="text-xs text-brand-bg/40 mt-1">via nairobirestaurants.co.ke</div>
+                </div>
             </div>
         </div>
     </section>
@@ -250,15 +757,14 @@
     <!-- WhatsApp Floating Button -->
     <a class="btn-whatsapp-floating" href="https://wa.me/254723925604" target="_blank">
         <span class="material-symbols-outlined">chat</span>
-        <span>Message Mama</span>
+        <span>Message Us</span>
     </a>
 
     <!-- Scripts -->
     <script src="js/main.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Karen branch — approximate neighborhood coordinates.
-            // NOTE: update to the exact building location once confirmed.
+            // Karen branch — 321 Ngong Road coordinates
             const latitude = -1.3197;
             const longitude = 36.7076;
 
@@ -278,7 +784,7 @@
             }).addTo(map);
 
             const marker = L.marker([latitude, longitude]).addTo(map);
-            marker.bindPopup("<div style='font-family: var(--font-headline); font-weight: bold;'>Asmara Hotel — Karen</div><div style='font-size: 0.8rem; font-family: var(--font-body);'>Karen Road, Nairobi</div>").openPopup();
+            marker.bindPopup("<div style='font-family: var(--font-headline); font-weight: bold;'>Asmara Hotel — Karen</div><div style='font-size: 0.8rem; font-family: var(--font-body);'>321 Ngong Road, Karen, Nairobi</div>").openPopup();
 
             if (isTouchDevice) {
                 const mapEl = document.getElementById('map');

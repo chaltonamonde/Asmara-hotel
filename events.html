@@ -44,7 +44,7 @@
     
     <style>
         .faq-item {
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 1.25rem 0;
         }
         
@@ -56,7 +56,7 @@
             font-family: var(--font-headline);
             font-size: 1.2rem;
             font-weight: 700;
-            color: var(--brand-charcoal);
+            color: var(--brand-gold);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -73,7 +73,7 @@
             height: 0;
             overflow: hidden;
             transition: height 0.3s ease-out;
-            color: var(--on-surface-variant);
+            color: rgba(251, 246, 238, 0.8);
             font-size: 0.95rem;
         }
         
@@ -83,27 +83,26 @@
         }
     </style>
 </head>
-<body class="bg-brand-bg text-brand-charcoal font-body selection:bg-brand-terracotta selection:text-white">
+<body class="bg-brand-charcoal text-brand-bg font-body selection:bg-brand-terracotta selection:text-white">
     <div class="grain"></div>
     
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-charcoal/10">
+    <header class="fixed w-full top-0 z-50 bg-brand-charcoal/90 backdrop-blur-md border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a class="font-headline text-2xl font-bold text-brand-terracotta tracking-tight" href="index.html">
                 ASMARA HOTEL
             </a>
             <div class="hidden md:flex gap-8 items-center">
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="index.html#famous">Famous Guests</a>
-                <a class="font-semibold text-sm text-brand-terracotta transition-colors" href="events.html">Events</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
-                <a class="font-semibold text-sm hover:text-brand-terracotta transition-colors" href="contact.html">Location</a>
-                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm hover:scale-95 transition-all" href="index.html#reservation">Reserve Now</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="index.html">Home</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="menu.html">Menu</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="about.html">Our Story</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="events.html">Events</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="gallery.html">Gallery</a>
+                <a class="font-semibold text-sm text-brand-bg hover:text-brand-terracotta transition-colors" href="contact.html">Location</a>
+                <a class="bg-brand-terracotta text-white px-6 py-2 rounded-lg font-semibold text-sm glow-terracotta transition-all" href="index.html#reservation">Reserve Now</a>
             </div>
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-nav-toggle md:hidden p-2 text-brand-charcoal">
+            <button class="mobile-nav-toggle md:hidden p-2 text-brand-bg">
                 <span class="material-symbols-outlined">menu</span>
             </button>
         </nav>
@@ -122,14 +121,15 @@
     </div>
 
     <!-- Events Section -->
-    <section class="pt-32 pb-16">
-        <div class="max-w-7xl mx-auto px-6">
+    <section class="pt-32 pb-16 hero-colorful-bg relative">
+        <div class="absolute inset-0 bg-brand-charcoal/80"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16 reveal">
-                <div class="inline-flex items-center justify-center w-16 h-16 bg-brand-terracotta/10 rounded-full mb-6">
-                    <span class="material-symbols-outlined text-brand-terracotta text-4xl">music_note</span>
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-brand-terracotta glow-terracotta rounded-full mb-6 text-white">
+                    <span class="material-symbols-outlined text-4xl">music_note</span>
                 </div>
-                <h1 class="font-headline text-5xl mb-4">Live Rumba &amp; Lingala Nights</h1>
-                <p class="font-body text-brand-charcoal/70 max-w-2xl mx-auto">
+                <h1 class="font-headline text-5xl mb-4 text-brand-gold">Live Rumba &amp; Lingala Nights</h1>
+                <p class="font-body text-brand-bg/80 max-w-2xl mx-auto">
                     Experience the soulful rhythms of the Congo and Kenya. Every week, we host Nairobi's finest live bands for an evening of authentic music, local heritage, and legendary fish.
                 </p>
             </div>
@@ -137,40 +137,40 @@
             <!-- Event Cards Grid -->
             <div class="grid-3 mb-16">
                 <!-- Friday -->
-                <div class="event-card reveal">
-                    <p class="event-day">Friday Night</p>
-                    <h3 class="font-headline text-2xl mb-2">The Victoria Serenaders</h3>
-                    <p style="color: var(--on-surface-variant); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                <div class="event-card reveal glass-dark border border-white/10 rounded-2xl p-6 glow-terracotta text-white">
+                    <p class="event-day text-brand-terracotta font-semibold mb-1">Friday Night</p>
+                    <h3 class="font-headline text-2xl mb-2 text-brand-gold">The Victoria Serenaders</h3>
+                    <p style="color: rgba(251, 246, 238, 0.7); font-size: 0.95rem; margin-bottom: 1.5rem;">
                         Bringing you traditional Benga melodies and classic Congolese Rumba. The perfect way to kick off your weekend.
                     </p>
-                    <div class="event-time">
-                        <span class="material-symbols-outlined">schedule</span>
+                    <div class="event-time text-brand-bg/90 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-brand-terracotta">schedule</span>
                         7:00 PM - 10:30 PM
                     </div>
                 </div>
 
                 <!-- Saturday -->
-                <div class="event-card reveal" style="transition-delay: 100ms;">
-                    <p class="event-day">Saturday Night</p>
-                    <h3 class="font-headline text-2xl mb-2">Kilimani Jazz Collective</h3>
-                    <p style="color: var(--on-surface-variant); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                <div class="event-card reveal glass-dark border border-white/10 rounded-2xl p-6 glow-gold text-white" style="transition-delay: 100ms;">
+                    <p class="event-day text-brand-gold font-semibold mb-1">Saturday Night</p>
+                    <h3 class="font-headline text-2xl mb-2 text-brand-gold">Kilimani Jazz Collective</h3>
+                    <p style="color: rgba(251, 246, 238, 0.7); font-size: 0.95rem; margin-bottom: 1.5rem;">
                         A fusion of contemporary African Jazz, sax improvisations, and high-energy Lingala beats that will get you moving.
                     </p>
-                    <div class="event-time">
-                        <span class="material-symbols-outlined">schedule</span>
+                    <div class="event-time text-brand-bg/90 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-brand-gold">schedule</span>
                         7:30 PM - 11:00 PM
                     </div>
                 </div>
 
                 <!-- Sunday -->
-                <div class="event-card reveal" style="transition-delay: 200ms;">
-                    <p class="event-day">Sunday Afternoon</p>
-                    <h3 class="font-headline text-2xl mb-2">Mama's Sunday Soul</h3>
-                    <p style="color: var(--on-surface-variant); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                <div class="event-card reveal glass-dark border border-white/10 rounded-2xl p-6 glow-green text-white" style="transition-delay: 200ms;">
+                    <p class="event-day text-brand-green font-semibold mb-1">Sunday Afternoon</p>
+                    <h3 class="font-headline text-2xl mb-2 text-brand-gold">Mama's Sunday Soul</h3>
+                    <p style="color: rgba(251, 246, 238, 0.7); font-size: 0.95rem; margin-bottom: 1.5rem;">
                         Relaxed acoustic sets, traditional storytelling chords, and chilled rhythms to accompany your family lunch.
                     </p>
-                    <div class="event-time">
-                        <span class="material-symbols-outlined">schedule</span>
+                    <div class="event-time text-brand-bg/90 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-brand-green">schedule</span>
                         2:00 PM - 5:00 PM
                     </div>
                 </div>
@@ -178,8 +178,8 @@
 
             <!-- Call to Action -->
             <div class="text-center reveal" style="transition-delay: 300ms;">
-                <p class="mb-6 font-semibold text-brand-charcoal/80">VIP tables fill up quickly during live band sessions.</p>
-                <a class="bg-brand-green text-white px-10 py-4 rounded-lg font-semibold hover:scale-105 transition-all inline-flex items-center gap-2" href="index.html#reservation">
+                <p class="mb-6 font-semibold text-brand-gold">VIP tables fill up quickly during live band sessions.</p>
+                <a class="bg-brand-green text-white px-10 py-4 rounded-lg font-semibold glow-green transition-all inline-flex items-center gap-2" href="index.html#reservation">
                     <span class="material-symbols-outlined">table_restaurant</span> Book a Table Now
                 </a>
             </div>
@@ -187,9 +187,9 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-16 bg-white border-t border-brand-charcoal/5">
+    <section class="py-16 border-t border-white/10">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="font-headline text-3xl text-center mb-10 reveal">Frequently Asked Questions</h2>
+            <h2 class="font-headline text-3xl text-center mb-10 text-brand-gold reveal">Frequently Asked Questions</h2>
             
             <div class="reveal" style="transition-delay: 100ms;">
                 

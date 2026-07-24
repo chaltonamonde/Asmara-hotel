@@ -351,7 +351,7 @@
 .checkout-form-label {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--brand-charcoal);
+    color: rgba(251, 246, 238, 0.8);
 }
 
 .checkout-form-input, 
@@ -361,9 +361,9 @@
     font-size: 0.95rem;
     padding: 0.75rem 1rem;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
-    background-color: var(--surface-white);
-    color: var(--brand-charcoal);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: transparent;
+    color: var(--brand-bg);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     width: 100%;
 }
@@ -405,8 +405,8 @@
 
 /* ── Dynamic Payment Section ── */
 .payment-details-box {
-    background-color: var(--brand-bg);
-    border: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 1.25rem;
     margin-top: 0.75rem;
@@ -416,7 +416,7 @@
 .payment-tab-group {
     display: flex;
     gap: 0.5rem;
-    background-color: rgba(43, 36, 32, 0.05);
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 0.25rem;
     border-radius: 8px;
     margin-bottom: 1rem;
@@ -430,7 +430,7 @@
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--brand-charcoal);
+    color: var(--brand-bg);
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
@@ -440,13 +440,13 @@
 }
 
 .payment-tab:hover {
-    background-color: rgba(217, 105, 45, 0.08);
+    background-color: rgba(217, 105, 45, 0.2);
 }
 
 .payment-tab.active {
-    background-color: var(--surface-white);
-    color: var(--brand-terracotta);
-    box-shadow: 0 2px 8px rgba(43, 36, 32, 0.08);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--brand-gold);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .payment-method-panel {
@@ -468,7 +468,7 @@
     background-color: rgba(232, 184, 75, 0.15);
     border: 1px solid rgba(232, 184, 75, 0.3);
     border-radius: 8px;
-    color: var(--brand-charcoal);
+    color: rgba(251, 246, 238, 0.9);
     font-size: 0.85rem;
     line-height: 1.4;
 }
